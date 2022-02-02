@@ -63,51 +63,57 @@
                                                             </ul>
                                                         </li>
                             --}}
-                            <li class="search-wrap hassub d-block d-lg-none">
+                            <li class="search-wrap hassub d-block d-lg-none" style="display: flex">
                                 @if (Route::has('login'))
-                                    <a href="#" class="search-btn">
-                                        <i class="simple-icon-user"></i>
-                                    </a>
-                                    <ul class="hassub-body search-body">
-                                        <li>
-                                            <div class="card-user-login rounded-0 shadow">
-                                                @auth
-                                                    @if(auth()->user()->role == 1)
-                                                        <a href="#" class="hover-user row align-items-center"
-                                                           wire:click.prevent="goUrl('admin.users')">
-                                                            <i class="simple-icon-grid col-2"></i>
-                                                            <div class="col-8 text-left align-middle">
-                                                                Panel Admin
-                                                            </div>
-                                                        </a>
-                                                    @endif
-                                                    <a href="#" class="hover-user row align-items-center"
-                                                       wire:click.prevent="goUrl('social.home')">
-                                                        <i class="simple-icon-speech col-2"></i>
-                                                        <div class="col-8 text-left align-middle">
-                                                            Media Social
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="hover-user row align-items-center"
-                                                       wire:click.prevent="goUrl('logout')">
-                                                        <i class="simple-icon-logout col-2"></i>
-                                                        <div class="col-8 text-left align-middle">
-                                                            Cerrar
-                                                        </div>
-                                                    </a>
-                                                @else
-                                                    <a href="#" class="hover-user row align-items-center"
-                                                       wire:click.prevent="goUrl('login')">
-                                                        <i class="simple-icon-login col-2"></i>
-                                                        <div class="col-8 text-left align-middle">
-                                                            login
-                                                        </div>
-                                                    </a>
-                                                @endif
 
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <div class="dropdown">
+                                        <a type="text" id="dropdownMenuButton" data-toggle="dropdown"
+                                           aria-haspopup="true" aria-expanded="false">
+                                            <i class="simple-icon-user text-secondary"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right p-1"
+                                             aria-labelledby="dropdownMenuButton">
+                                            @auth
+                                                @if(auth()->user()->role == 1)
+                                                    <div
+                                                        class="hover-user row align-items-center"
+                                                        onclick="location.href='{{ route('admin.users') }}';">
+                                                        <i class="simple-icon-grid col-2"></i>
+                                                        <div class="col-8 text-left align-middle">
+                                                            Panel Admin
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                <div class="hover-user row align-items-center"
+                                                     onclick="location.href='{{ route('social.home') }}';">
+                                                    <i class="simple-icon-speech col-2"></i>
+                                                    <div class="col-8 text-left align-middle">
+                                                        Media Social
+                                                    </div>
+                                                </div>
+                                                <div class="hover-user row align-items-center"
+                                                     onclick="location.href='{{ route('logout') }}'; event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                          class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                    <i class="simple-icon-logout col-2"></i>
+                                                    <div class="col-8 text-left align-middle">
+                                                        Cerrar
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="hover-user row align-items-center"
+                                                     onclick="location.href='{{ route('login') }}';">
+                                                    <i class="simple-icon-login col-2"></i>
+                                                    <div class="col-8 text-left align-middle">
+                                                        login
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                 @endif
                             </li>
                             <li class="mobile-menu_wrap d-block d-lg-none">

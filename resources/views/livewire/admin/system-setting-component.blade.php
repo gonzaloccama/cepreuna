@@ -7,7 +7,7 @@
                 <img src="{{ asset('assets/images/logo/').'/'.$edit_logo_1st }}" alt="logo" class="img-fluid">
                 <hr>
                 <div class="font-italic text-center" style="font-size: 11px">
-                    {{ \App\Http\dateSpanish($updated_at, 'withtime') }}
+                    {{ $this->dateSpanish($updated_at, 'withtime') }}
                 </div>
                 <hr>
                 <div class="mail-list mt-0">

@@ -10,7 +10,6 @@ use Livewire\Component;
 
 class MediaPostsSaved extends Component
 {
-
     public function render()
     {
         $data['_title'] = 'Guardados';

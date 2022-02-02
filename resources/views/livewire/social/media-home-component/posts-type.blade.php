@@ -63,7 +63,7 @@
             <div class="cover-container"
                  style="background-image:linear-gradient(
                      rgba(0,15,57,0.45), rgba(0,15,57,0.45)),
-                     url('{{ asset('assets/images/users/').'/'.auth()->user()->user_picture }}');
+                     url('{{ asset('assets/images/users/').'/'.$post->user->user_picture }}');
                      background-size: cover;height: 200px ">
             </div>
             <div class="user-detail text-center mb-3">
@@ -98,7 +98,7 @@
         <div class="col-md-12 text-center mb-3">
             <a href="{{ asset('assets/uploads/users/posts-files/').'/'.$post_file->source }}"
                target="_blank" class="font-italic">
-                <img src="{{ asset('assets/images/icon/pdf-page.png') }}"
+                <img src="{{ asset('assets/images/icon/pdf-page.svg') }}"
                      class="img-fluid shadow-sm" alt="" width="60"><br>{{ $post_file->source }}
             </a>
         </div>

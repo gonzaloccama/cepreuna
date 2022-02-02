@@ -429,7 +429,7 @@ a:hover {
 }
 
 .iq-card-header .dropdown-menu .dropdown-item {
-    padding: 8px 15px;
+    padding: 8px 8px;
     color: var(--iq-body-text);
 }
 
@@ -1223,7 +1223,7 @@ body.sidebar-main .iq-sidebar .iq-sidebar-menu .iq-menu li ul.iq-submenu-data li
 
 @keyframes shadow-pulse-dots {
     0% {
-        box-shadow: 0 0 0 0px rgba(230, 65, 65, 0.2);
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.53);
     }
     100% {
         box-shadow: 0 0 0 15px rgba(230, 65, 65, 0);
@@ -1907,7 +1907,7 @@ div#post-modal-data .modal .modal-dialog {
     visibility: hidden;
     opacity: 0;
     width: 260px;
-    top: -50px;
+    top: -55px;
     border: none;
     box-shadow: 0px 0px 20px 0px rgba(44, 101, 144, 0.1);
     transition: all 0.45s ease 0s;
@@ -4134,7 +4134,7 @@ span.avatar-status {
     color: var(--iq-white);
     background: var(--iq-primary);
     border-radius: 15px;
-    box-shadow: 0 2px 4px 0 rgb(80, 181, 255);
+    box-shadow: 0 1px 4px 0 rgba(0, 54, 90, 0.59);
 }
 
 .chat-message > p {

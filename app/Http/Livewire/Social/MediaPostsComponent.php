@@ -167,6 +167,8 @@ class MediaPostsComponent extends Component
     {
         $this->validate($this->rules, [], $this->attributes);
 
+        $postID = null;
+
         if ($this->text || $this->photo_source || $this->video_source || $this->file_source) {
 
             $post = new MediaPost();
@@ -184,9 +186,8 @@ class MediaPostsComponent extends Component
             $post->privacy = $this->privacy;
             $post->text = $this->text;
 
-            $postID = $post->getNextId();
-
             if ($post->save()) {
+                $postID = $post->id;
                 $this->emit('closeModalPost');
                 if (!$this->photo_source && !$this->video_source && !$this->file_source) {
                     $this->cleanItems();
@@ -207,7 +208,7 @@ class MediaPostsComponent extends Component
                 $postPhoto = new MediaPostsPhoto();
 
                 $postPhoto->post_id = $postID;
-                $postPhoto->album_id = 1;
+                $postPhoto->album_id = 0;
                 $postPhoto->source = $photoSourceName;
 
                 if ($postPhoto->save()) {

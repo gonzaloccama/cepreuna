@@ -1,8 +1,8 @@
 <?php
-//$pattern = '/:%icon=([\w -]+)%:/';
+//$pattern = '/:%icon=([\w -]+)%:/'; this page has expired due to inactivity. Would you like to refresh the page
 
 $pattern = '/:\%icon=(.*?)\%:/s';
-$replacement = '<img src="/assets/images/icon/media/${1}.png" alt="" width="30">';
+$replacement = '<img src="/assets/images/icon/media/${1}.png" alt="" width="'.$width.'">';
 
 echo preg_replace($pattern, $replacement, $icon);
 ?>

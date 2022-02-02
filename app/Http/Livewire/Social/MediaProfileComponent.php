@@ -184,51 +184,5 @@ class MediaProfileComponent extends Component
         $this->new_profile_source = null;
     }
 
-    public function dateSpanish($date, $part = 'full')
-    {
-        $year = date('Y', strtotime($date));
-        $month = date('n', strtotime($date));
-        $day = date('d', strtotime($date));
-        $week = date('w', strtotime($date));
-        $daysWeek = [
-            "Domingo",
-            "Lunes",
-            "Martes",
-            "Miércoles",
-            "Jueves",
-            "Viernes",
-            "Sábado"
-        ];
-        $months = [
-            1 =>
-                "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"
 
-        ];
-
-        switch ($part) {
-            case 'full':
-                return $daysWeek[$week] . ", $day de " . $months[$month] . " de $year";
-            case 'year':
-                return $year;
-            case 'month':
-                return $months[$month];
-            case 'day':
-                return $day;
-            case 'without':
-                return "$day de " . $months[$month] . " de $year";
-            default:
-                return $daysWeek[$week];
-        }
-    }
 }

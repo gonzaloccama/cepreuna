@@ -1,4 +1,4 @@
-<div>
+<div style="min-height: 1000px;">
     <?php
     $img = auth()->user()->user_gender == 2 ? 'woman.png' : 'man.png';
     $profile = auth()->user()->user_cover ? auth()->user()->user_cover : $img;
@@ -68,16 +68,16 @@
                                 <p class="mb-0 text-primary">{{ $this->timeElapsedString($post->created_at) }}</p>
                             </div>
 
-                                <div class="iq-card-post-toolbar">
-                                    <div class="dropdown">
+                            <div class="iq-card-post-toolbar">
+                                <div class="dropdown">
                                           <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false" role="button">
                                             <i class="ri-more-fill"></i>
                                           </span>
-                                        @include('livewire.social.media-home-component.posts-actions')
-                                    </div>
+                                    @include('livewire.social.media-home-component.posts-actions')
                                 </div>
                             </div>
+                        </div>
                     </div>
 
                     @include('livewire.social.media-home-component.posts')
@@ -160,21 +160,25 @@
                         <hr class="mb-1">
 
                         @if(0)
-                            <div class="reaction-group mb-0 pb-0">
-                                <?php
-                                $_reactions = [
-                                    (object)['title' => 'Me gusta', 'img' => 'like-1.png'],
-                                    (object)['title' => 'Me encanta', 'img' => 'heart.png'],
-                                    (object)['title' => 'Estoy feliz', 'img' => 'happy.png'],
-                                ];
-                                ?>
-                                @foreach($_reactions as $item)
-                                    <a href="javascript:;" class="reaction reaction-sm" data-toggle="tooltip"
-                                       data-original-title="{{ $item->title }}">
-                                        <img alt="{{ $item->title }}" class="rounded-circle"
-                                             src="{{ asset('assets/images/icon/').'/'.$item->img }}">
-                                    </a>
-                                @endforeach
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="like-block position-relative d-flex align-items-center">
+                                    <div class="reaction-group mb-0 pb-0">
+                                        <?php
+                                        $_reactions = [
+                                            (object)['title' => 'Me gusta', 'img' => 'like-1.png'],
+                                            (object)['title' => 'Me encanta', 'img' => 'heart.png'],
+                                            (object)['title' => 'Estoy feliz', 'img' => 'happy.png'],
+                                        ];
+                                        ?>
+                                        @foreach($_reactions as $item)
+                                            <a href="javascript:;" class="reaction reaction-sm" data-toggle="tooltip"
+                                               data-original-title="{{ $item->title }}">
+                                                <img alt="{{ $item->title }}" class="rounded-circle"
+                                                     src="{{ asset('assets/images/icon/').'/'.$item->img }}">
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                             <hr class="mb-1 mt-0">
                         @endif
@@ -294,14 +298,18 @@
             </div>
         </div>
     @endforeach
-    <div class="col-sm-12 text-center">
 
-        <button class="btn btn-link" wire:click.prevent="loadMore">
-            <img src="{{ asset('assets/social/images/page-img/page-load-loader.gif') }}"
-                 alt="loader" style="height: 100px;">
-            Cargar más
-        </button>
-        {{--                    <img src="{{ asset('assets/user/images/page-img/page-load-loader.gif') }}" alt="loader"--}}
-        {{--                         style="height: 100px;">--}}
-    </div>
+    @if(filled($posts))
+        @if($load <= $posts->count())
+            <div class="col-sm-12 text-center">
+
+                <button class="btn btn-link roboto-link weight-500 font-size-16" wire:click.prevent="loadMore">
+                    {{--            <img src="{{ asset('assets/social/images/page-img/page-load-loader.gif') }}"--}}
+                    {{--                 alt="loader" style="height: 100px;">--}}
+                    Cargar más
+                </button>
+
+            </div>
+        @endif
+    @endif
 </div>

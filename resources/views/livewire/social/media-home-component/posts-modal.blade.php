@@ -14,12 +14,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center" wire:ignore.self>
                         <div class="user-img">
                             <img src="{{ asset('assets/images/users/').'/'.$profile }}"
                                  alt="userimg" class="avatar-60 rounded-circle">
                         </div>
-                        <form class="post-text ml-3 w-100" action="javascript:;">
+                        <form class="post-text ml-3 w-100">
                         <textarea type="text" class="form-control iq-bg-primary" wire:model="text"
                                   style="line-height: 180%"
                                   placeholder="Escribe algo aquí..." autofocus></textarea>

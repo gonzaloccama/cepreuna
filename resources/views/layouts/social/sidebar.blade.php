@@ -18,11 +18,11 @@
                            @if(count($menu->children)) data-toggle="collapse" aria-expanded="false" @endif>
                             {{--                            <i class="{{ $menu->menu_icon }}"></i>--}}
                             @if($menu->route != 'social.profile')
-                                @include('livewire.widgets.icon-regex.find-icon', ['icon' => $menu->menu_icon])
+                                @include('livewire.widgets.icon-regex.find-icon', ['icon' => $menu->menu_icon, 'width' => 30])
                             @else
                                 <img src="{{ asset('assets/images/users/').'/'.$profile }}" class="img-fluid rounded-circle" alt="" width="30">
                             @endif
-                            <span style="font-size: 12px; font-weight: 500; margin-left: 5px;">{{ $menu->name }}</span>
+                            <span style="margin-left: 5px;" class="font-rajdhani-16 weight-500">{{ $menu->name }}</span>
                             @if(count($menu->children))
                                 <i class="ri-arrow-right-s-line iq-arrow-right"></i>
                             @endif
@@ -34,8 +34,9 @@
                                     @if($smenu->route != 'admin.users' || auth()->user()->role == 1)
                                         <li class="{{ request()->route()->getName() == $smenu->route ? 'active' : '' }}">
                                             <a href="{{ route($smenu->route) }}"
-                                               style="font-size: 10px; margin-left: 5px;">
-                                                <i class="simple-icon-energy"></i>{{ $smenu->name }}
+                                               style="font-size: 12px;">
+                                                @include('livewire.widgets.icon-regex.find-icon', ['icon' => ':%icon=transfer%:', 'width' => 20])
+                                                <span>{{ $smenu->name }}</span>
                                             </a>
                                         </li>
                                     @endif

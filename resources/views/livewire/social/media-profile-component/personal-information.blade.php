@@ -117,13 +117,20 @@
                 </div>
                 <div class="col-9">
                     @if(!$user->user_privacy_birthdate || $profile_id == auth()->user()->id)
-                        <p class="mb-0">
-                            {{ $this->dateSpanish($user->user_birthdate) }}
-                            {!! $user->user_privacy_birthdate ? '<i class="iconsminds-security-block text-warning"></i>' : '' !!}
-                        </p>
+                        @if($user->user_birthdate != null)
+                            <p class="mb-0">
+                                {{ $this->dateSpanish($user->user_birthdate) }}
+                                {!! $user->user_privacy_birthdate ? '<i class="iconsminds-security-block text-warning"></i>' : '' !!}
+                            </p>
+                        @else
+                            <p class="mb-0">
+                                {{ __('No definido') }}
+                            </p>
+                        @endif
                     @else
                         <p class="mb-0"><i class="iconsminds-security-block"></i></p>
                     @endif
+
                 </div>
 
 

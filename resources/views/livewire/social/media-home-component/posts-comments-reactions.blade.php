@@ -17,7 +17,8 @@
             </a>
         @else
             <a href="" class="dropdown-toggle" data-toggle="dropdown"
-               wire:click.prevent="storePostsCommentsReaction({{$comment->id}}, {{ auth()->user()->id }}, 'like-my')"
+               {{--               wire:click.prevent="storePostsCommentsReaction({{$comment->id}}, {{ auth()->user()->id }}, 'like-my')"--}}
+               wire:click.prevent="$emitTo('media-posts-component', 'refreshComponent')"
                aria-haspopup="true" aria-expanded="false" role="button">
                 <img
                     src="{{ asset('assets/images/icon/like.png') }}"
@@ -26,7 +27,7 @@
         @endif
         <div class="dropdown-menu w-auto shadow border">
             @if($myLike)
-                <a class="ml-3 mr-2 reactions" href="#"
+                <a class="ml-2 mr-2 reactions" href="#"
                    data-toggle="tooltip" data-placement="top"
                    wire:click.prevent="updatePostsCommentsReaction({{ $myLike->id }}, 'like-my')"
                    title="" data-original-title="Me gusta"><img
@@ -44,7 +45,7 @@
                         src="{{ asset('assets/images/icon/happy.png') }}"
                         class="img-fluid" alt=""></a>
             @else
-                <a class="ml-3 mr-2 reactions" href="#"
+                <a class="ml-2 mr-2 reactions" href="#"
                    data-toggle="tooltip" data-placement="top"
                    wire:click.prevent="storePostsCommentsReaction({{$comment->id}}, {{ auth()->user()->id }}, 'like-my')"
                    title="" data-original-title="Me gusta"><img

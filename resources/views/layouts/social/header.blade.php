@@ -39,76 +39,9 @@
                             {{--                            <i class="ri-home-line"></i>--}}
                         </a>
                     </li>
-                    {{--
-                                        <li class="nav-item">
-                                            <a href="#" class="search-toggle text-secondary iq-waves-effect menu-social-color">
-                                                <i class="ri-notification-3-fill"></i>
-                                                <span class="bg-danger dots"></span>
-                                            </a>
-                                            <div class="iq-sub-dropdown">
-                                                <div class="iq-card shadow-none m-0">
-                                                    <div class="iq-card-body p-0 ">
-                                                        <div class="bg-primary p-3">
-                                                            <h5 class="mb-0 text-white">All Notifications<small
-                                                                    class="badge badge-light float-right pt-1">4</small></h5>
-                                                        </div>
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <div class="">
-                                                                    <img class="avatar-40 rounded"
-                                                                         src="{{ asset('assets/social/images/user/01.jpg') }}" alt="">
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">Emma Watson Bni</h6>
-                                                                    <small class="float-right font-size-12 text-muted">Just Now</small>
-                                                                    <p class="mb-0 text-muted">95 MB</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <div class="">
-                                                                    <img class="avatar-40 rounded"
-                                                                         src="{{ asset('assets/social/images/user/02.jpg') }}" alt="">
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">New customer is join</h6>
-                                                                    <small class="float-right font-size-12 text-muted">5 days ago</small>
-                                                                    <p class="mb-0 text-muted">Cyst Bni</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <div class="">
-                                                                    <img class="avatar-40 rounded"
-                                                                         src="{{ asset('assets/social/images/user/03.jpg') }}" alt="">
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">Two customer is left</h6>
-                                                                    <small class="float-right font-size-12 text-muted">2 days ago</small>
-                                                                    <p class="mb-0 text-muted">Cyst Bni</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <div class="">
-                                                                    <img class="avatar-40 rounded"
-                                                                         src="{{ asset('assets/social/images/user/04.jpg') }}" alt="">
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">New Mail from Fenny</h6>
-                                                                    <small class="float-right font-size-12 text-muted">3 days ago</small>
-                                                                    <p class="mb-0 text-muted">Cyst Bni</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                    --}}
+
+                    @livewire('social.media-notifications')
+
                 </ul>
                 <ul class="navbar-list">
                     <li>
@@ -181,6 +114,7 @@
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                   class="d-none">
                                                 @csrf
+                                                <input type="hidden" name="_token" value="{{ Session::token() }}">
                                             </form>
                                         </a>
                                     </div>

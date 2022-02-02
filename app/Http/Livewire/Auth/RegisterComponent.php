@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Hash;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -25,7 +26,7 @@ class RegisterComponent extends Component
         'username' => 'required|min:6|unique:users',
         'email' => 'required|email|unique:users',
         'phone' => 'required|numeric|digits:9|unique:users',
-        'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$@#%]).*$/|',
+        'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$@#%_~]).*$/|',
         'confirm_password' => 'required|required|same:password',
         'user_firstname' => 'required|min:3',
         'user_lastname' => 'required|min:3',
@@ -129,13 +130,17 @@ class RegisterComponent extends Component
 
     private function getDNI($id)
     {
-        $client = new Client();
-        $response = $client
-            ->get('https://www.facturacionelectronica.us/' .
-                'facturacion/controller/ws_consulta_rucdni_v2.php?documento=' .
-                'DNI&usuario=10447915125&password=985511933&nro_documento=' . $id)
-            ->getBody();
-        return json_decode($response)->result;
+        $client = new Client(['verify' => false]);
+        try {
+            $response = $client
+                ->get('https://www.facturacionelectronica.us/' .
+                    'facturacion/controller/ws_consulta_rucdni_v2.php?documento=' .
+                    'DNI&usuario=10447915125&password=985511933&nro_documento=' . $id)
+                ->getBody();
+            return json_decode($response)->result;
+        } catch (RequestException $e) {
+            return false;
+        }
     }
     /*** end search data ***/
 }

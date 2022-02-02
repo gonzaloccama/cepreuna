@@ -15,13 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->string('phone', 9)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('role');
             $table->rememberToken();
+
+            $table->string('user_google_id')->nullable();
 
             $table->enum('user_started', [0, 1])->default(0);
             $table->enum('user_activated', [0, 1])->default(1);
@@ -60,6 +62,9 @@ class CreateUsersTable extends Migration
 
             $table->timestamp('user_seen_at')->nullable();
             $table->timestamp('user_first_failed_login')->nullable();
+
+            $table->boolean('user_is_online')->default(0);
+            $table->string('user_last_activity')->nullable();
 
             $table->timestamps();
         });

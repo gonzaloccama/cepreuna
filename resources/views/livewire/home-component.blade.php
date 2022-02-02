@@ -11,20 +11,44 @@
         @include('livewire.home-component.details-page.'.$details)
     @endif
 
-{{--        <a class="trigger_popup_fricc">Click here to show the popup</a>--}}
+    {{--        <a class="trigger_popup_fricc">Click here to show the popup</a>--}}
 
-{{--        <div class="hover_bkgr_fricc">--}}
-{{--            <span class="helper"></span>--}}
-{{--            <div>--}}
-{{--                <div class="popupCloseButton">&times;</div>--}}
-{{--                <p>Add any HTML content<br />inside the popup box!</p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+    {{--        <div class="hover_bkgr_fricc">--}}
+    {{--            <span class="helper"></span>--}}
+    {{--            <div>--}}
+    {{--                <div class="popupCloseButton">&times;</div>--}}
+    {{--                <p>Add any HTML content<br />inside the popup box!</p>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
 
 </div>
 
 @push('styles')
+    <style>
+        .border_separator {
+            height: 10px;
+            color: rgba(0, 54, 90, 0.2);
+            background-image: linear-gradient(
+                90deg,
+                currentColor,
+                currentColor 33.33%,
+                transparent 33.33%,
+                transparent 100%
+            );
+            background-size: 3px 100%;
+            width: 100%;
+        }
 
+        /*.border_separator:after {*/
+        /*    background: #fff;*/
+        /*    content: 'CEPREUNA';*/
+        /*    padding: 0 4px;*/
+        /*    color: rgba(0, 54, 90, 0.19);*/
+        /*    font-weight: 700;*/
+        /*    position: relative;*/
+        /*    top: -10px;*/
+        /*}*/
+    </style>
 @endpush
 
 @push('scripts')
@@ -50,13 +74,13 @@
             load_page();
             blog_1();
 
-            $(".trigger_popup_fricc").click(function(){
+            $(".trigger_popup_fricc").click(function () {
                 $('.hover_bkgr_fricc').show();
             });
-            $('.hover_bkgr_fricc').click(function(){
+            $('.hover_bkgr_fricc').click(function () {
                 $('.hover_bkgr_fricc').hide();
             });
-            $('.popupCloseButton').click(function(){
+            $('.popupCloseButton').click(function () {
                 $('.hover_bkgr_fricc').hide();
             });
 
@@ -247,7 +271,7 @@
                 $(".main-header").append($("<div><b class='top-progress'></b><i class='top-i'></i></div>").attr("id", "progress"));
 
                 // animate the progress..
-                $("#progress").width("101%").delay(800).fadeOut(2000, function() {
+                $("#progress").width("101%").delay(800).fadeOut(2000, function () {
                     // ..then remove it.
                     $(this).remove();
                 });

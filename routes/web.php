@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleController;
 use App\Http\Livewire\Admin\CycleComponent;
 use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\DocumentComponent;
@@ -15,6 +16,7 @@ use App\Http\Livewire\Social\Admin\MediaPostComponent;
 use App\Http\Livewire\Social\Admin\UsersComponent;
 use App\Http\Livewire\Social\MediaGroups;
 use App\Http\Livewire\Social\MediaHomeComponent;
+use App\Http\Livewire\Social\MediaMessageComponent;
 use App\Http\Livewire\Social\MediaPostsSaved;
 use App\Http\Livewire\Social\MediaProfileComponent;
 use App\Http\Livewire\Social\MediaSettingProfile;
@@ -38,8 +40,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/login', \App\Http\Livewire\Auth\LoginComponent::class)->name('login');
-Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
+//Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
+Route::get('/register', function (){ return view('errors.404');})->name('register');
 Route::get('/send-reset-email', \App\Http\Livewire\Auth\SendResetEmailComponent::class)->name('send-reset-email');
+Route::get('/auth/google', [GoogleController::class, 'goToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [GoogleController::class, 'goHandleCallback'])->name('auth.callback');
 
 Route::get('/', HomeComponent::class)->name('home');
 
@@ -67,6 +72,7 @@ Route::middleware([UserBanned::class])->group(function () {
         Route::get('/media/settings/profile', MediaSettingProfile::class)->name('social.settings.profile');
         Route::get('/media-saved', MediaPostsSaved::class)->name('social.saved');
         Route::get('/media-groups', MediaGroups::class)->name('social.groups');
+        Route::get('/media-chat', MediaMessageComponent::class)->name('social.chat');
     });
 });
 

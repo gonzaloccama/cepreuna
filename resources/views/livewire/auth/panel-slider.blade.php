@@ -12,8 +12,8 @@
         @foreach($sliders as $slider)
             <div class="item">
                 <img src="{{ asset('assets/images/slider/'.'/'.$slider->image) }}" class="img-fluid mb-4" alt="logo">
-                <h4 class="mb-1 text-white">{{ $slider->title }}</h4>
-                <p>{{ $slider->text }}</p>
+                <h4 class="mb-1 text-white font-rajdhani weight-600">{{ $slider->title }}</h4>
+                <p class="text-white font-rajdhani">{{ $slider->text }}</p>
             </div>
         @endforeach
     </div>

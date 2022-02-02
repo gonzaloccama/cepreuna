@@ -4,9 +4,9 @@
     $teams = \App\Models\TeamMember::where('status', '1')->get();
 ?>
     <div class="container">
-        <hr>
+        <div class="border_separator mb-5"></div>
         <div class="row">
-            <div class="col-xl-5 col-lg-6 pb-6 pb-lg-0">
+            <div class="col-xl-5 col-lg-6 mt-1 pb-6 pb-lg-0">
                 <div class="section-title-wrap-2">
                     <div class="with-border border-0"> {{--section-title--}}
                         <h1 class="mb-7">DIRECTIVOS DE LA COMISIÓN</h1>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 pb-5">
                 <div class="swiper-container team-member-slider-1">
                     <div class="swiper-wrapper">
 
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <div class="border_separator mt-4"></div>
     </div>
 </div>
 <!-- Team Area End Here -->

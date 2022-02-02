@@ -247,6 +247,7 @@
     .hover-user:hover {
         background-color: #00365A;
         color: #fff !important;
+        cursor: pointer;
     }
 
     /*** scrollbar ***/
@@ -332,6 +333,19 @@
     .is-invalid:focus {
         border: 1px solid #80011a !important;
         box-shadow: 0 0 5px 0 rgba(128, 1, 26, 0.29) !important;
+    }
+
+    /*** menu header dropdown ***/
+    /*.dropdown:hover .dropdown-menu{*/
+    /*    display: block;*/
+    /*}*/
+
+    .dropdown-menu{
+        border-radius: 0;
+    }
+
+    .dropdown-menu a:hover{
+        background-color: #00365a;
     }
 
 </style>

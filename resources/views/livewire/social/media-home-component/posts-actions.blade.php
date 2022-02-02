@@ -1,4 +1,4 @@
-<div class="dropdown-menu rounded-0 m-0 p-0">
+<div class="dropdown-menu dropdown-menu-right rounded-0 m-0 p-0">
     @if(!$saved)
         <a class="dropdown-item p-3" href="#" wire:click.prevent="PostSaved({{ $post->id }})">
             <div class="d-flex align-items-top">
