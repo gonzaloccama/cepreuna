@@ -14,6 +14,8 @@ class LoginComponent extends Component
     public $password;
     public $currentPath;
 
+    public $tab;
+
     protected $rules = [
         'email' => 'required|email',
         'password' => 'required|min:6',
@@ -31,6 +33,8 @@ class LoginComponent extends Component
         }
 
         $this->currentPath = request()->path();
+
+        $this->tab = 1;
     }
 
     public function render()
@@ -76,5 +80,10 @@ class LoginComponent extends Component
         } else {
             return '/';  // member dashboard path
         }
+    }
+
+    public function updateTab($tab)
+    {
+        $this->tab = $tab;
     }
 }

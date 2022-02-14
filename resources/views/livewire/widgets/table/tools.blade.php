@@ -53,7 +53,7 @@
 
         <div class="btn-group">
             <button href="#custom-modal" class="btn btn-dark waves-effect waves-light" wire:click.prevent="openAdd"
-                    {{ !isset($setting['add']) && empty($setting['add'])?'':'disabled' }}
+                    {{ !isset($setting['add']) && empty($setting['add'])?'':'hidden' }}
                     data-animation="fadein" data-plugin="custommodal" data-overlayColor="#38414a"><i
                     class="fe-plus-circle mr-1"></i> Nuevo
             </button>

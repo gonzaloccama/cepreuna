@@ -108,8 +108,6 @@
                     <?php
                     $dt = Carbon\Carbon::parse($_messages->created_at)->format('g:i A');
 
-
-
                     $is_dt = Carbon\Carbon::parse($_messages->created_at)->format('Y-m-d');
                     ?>
                     @if($_messages->from_user == auth()->user()->id)
@@ -123,7 +121,11 @@
                             </div>
                             <div class="chat-detail">
                                 <div class="chat-message ml-5">
-                                    <p>{!! $_messages->message !!}</p>
+                                    <p class="mb-0" ondragstart="return false" onselectstart="return false"
+                                       oncontextmenu="return false">
+                                        @include('livewire.widgets.icon-regex.pattern-comment-emojis', ['content' => $_messages->message, 'w' => 30])
+                                    </p>
+                                    {{--                                    <p>{!! $_messages->message !!}</p>--}}
                                 </div>
                             </div>
                         </div>
@@ -138,7 +140,13 @@
                             </div>
                             <div class="chat-detail">
                                 <div class="chat-message mr-5">
-                                    <p>{!! $_messages->message !!}</p>
+
+                                    <p class="mb-0" ondragstart="return false" onselectstart="return false"
+                                       oncontextmenu="return false">
+                                        @include('livewire.widgets.icon-regex.pattern-comment-emojis', ['content' => $_messages->message, 'w' => 30])
+                                    </p>
+
+                                    {{--                                    <p>{!! $_messages->message !!}</p>--}}
                                 </div>
                             </div>
                         </div>
@@ -153,7 +161,8 @@
                     <span class="iq-start-icon text-primary">
                         <i class="ri-message-3-line"></i>
                     </span>
-                    <button id="chat-start" class="btn bg-white mt-3 text-primary">¡Escriba para iniciar una conversación!
+                    <button id="chat-start" class="btn bg-white mt-3 text-primary">¡Escriba para iniciar una
+                        conversación!
                     </button>
                 </div>
             @endif
@@ -166,19 +175,43 @@
         <div class="chat-footer p-3 bg-white">
             <form class="d-flex align-items-center" action="javascript:void(0);">
                 <div class="chat-attagement d-flex">
-                    {{--                    <a href="javascript:;">--}}
-                    {{--                        <i class="fa fa-smile-o pr-3" aria-hidden="true"></i>--}}
-                    {{--                    </a>--}}
+
+                    <div class="dropdown" wire:ignore>
+
+                        <a href="javascript:;" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-smile-o pr-3" aria-hidden="true"></i>
+                        </a>
+
+
+                        <div class="dropdown-menu border rounded-0">
+                            <div class="dropdown-item-text p-2" style="width:324px; height: 110px; overflow-y: auto"
+                                 ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
+
+                                @foreach($emojis as $emoji)
+                                    <a href="javascript:;" class="media-emoji reactions"
+                                       wire:click.prevent="updateText('{{ $emoji->pattern }}')">
+                                        @include('livewire.widgets.icon-regex.pattern-emojis', ['svg' => $emoji->pattern, 'w' => 45])
+                                    </a>
+                                @endforeach
+
+                            </div>
+
+                        </div>
+                    </div>
+                    {{--                                        <a href="javascript:;">--}}
+                    {{--                                            <i class="fa fa-smile-o pr-3" aria-hidden="true"></i>--}}
+                    {{--                                        </a>--}}
                     {{--                    <a href="javascript:;">--}}
                     {{--                        <i class="fa fa-paperclip pr-3" aria-hidden="true"></i>--}}
                     {{--                    </a>--}}
                 </div>
-                <input type="text" class="form-control mr-3" wire:model="message"
+                <input type="text" class="form-control mr-3 iq-bg-primary" wire:model="message"
                        placeholder="Escriba su mensaje...">
                 <button type="submit" wire:click.prevent="sendMessage"
-                        class="btn btn-primary d-flex align-items-center p-2"><i
-                        class="ri-send-plane-2-fill" aria-hidden="true"></i><span
-                        class="d-none d-lg-block ml-1">Enviar</span></button>
+                        class="btn btn-primary d-flex align-items-center p-2">
+                    <i class="ri-send-plane-2-fill" aria-hidden="true"></i>
+                    <span class="d-none d-lg-block ml-1">Enviar</span>
+                </button>
             </form>
         </div>
     </div>

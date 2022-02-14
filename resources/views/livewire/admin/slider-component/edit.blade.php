@@ -48,6 +48,7 @@
                     'name' => 'image',
                     'text' => 'Imagen',
                     'required' => 1,
+                    'required_mssg' => '1920x740',
                     'type' => 'file-h',
                     'file' => $newImage,
                     'editFile' => $editImage,

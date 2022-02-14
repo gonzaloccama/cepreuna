@@ -150,7 +150,7 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link rounded-0 font-size-16 active" id="home-tab" data-toggle="tab"
                                    href="#home" role="tab"
-                                   aria-controls="home" aria-selected="true">Requicitos</a>
+                                   aria-controls="home" aria-selected="true">Requisitos</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link rounded-0 font-size-16" id="profile-tab" data-toggle="tab"

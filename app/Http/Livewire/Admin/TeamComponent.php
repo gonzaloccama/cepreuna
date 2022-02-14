@@ -60,8 +60,8 @@ class TeamComponent extends BaseComponent
         'twitter' => 'nullable|url',
         'whatsapp' => 'nullable|numeric|digits:9',
         'biography' => 'nullable|min:50',
-        'image' => 'required|mimes:jpeg,jpg,png|max:360',
-        'newImage' => 'nullable|mimes:jpeg,jpg,png|max:360',
+        'image' => 'required|mimes:jpeg,jpg,png|max:240',
+        'newImage' => 'nullable|mimes:jpeg,jpg,png|max:240',
     ];
 
     public function mount()

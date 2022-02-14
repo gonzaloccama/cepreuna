@@ -20,8 +20,7 @@
             <h5 class="h6 bg-light p-2 text-uppercase">Vista previa del documento</h5>
         @endif
         <iframe src="{{ str_replace('view', 'preview', $findURL[0]) }}&embedded=true"
-                style="width:100%; height:{{ $height }}px; border: 1px solid rgba(54,72,79,0.07);"
-                frameborder="0"></iframe>
+                style="width:100%; height:{{ $height }}px; border: 1px solid rgba(54,72,79,0.07);"                frameborder="0"></iframe>
         <a href="https://drive.google.com/uc?export=download&id={{ $getIdDrive[0] }}"
            class="pt-1 btn btn-link text-danger pb-2"> <i class="fe-download-cloud"></i> Descargar
             archivo...</a>

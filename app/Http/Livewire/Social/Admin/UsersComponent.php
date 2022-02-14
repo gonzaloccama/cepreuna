@@ -56,7 +56,7 @@ class UsersComponent extends BaseComponent
         'user_dni' => 'DNI',
         'fullname' => 'Nombres',
         'phone' => 'Celular',
-        'email' => 'Celular',
+        'email' => 'Email',
         'user_activated' => 'Est.',
         'created_at' => 'Unido',
         'not' => '',
@@ -115,6 +115,7 @@ class UsersComponent extends BaseComponent
         $this->image_path = 'images/users/';
         $this->tab = 1;
         $this->user_activated = 1;
+        $this->role = 4;
     }
 
     public function render()
@@ -128,6 +129,7 @@ class UsersComponent extends BaseComponent
                 }
                 $query->orWhere(DB::raw("CONCAT(user_firstname, ' ', user_lastname)"), 'LIKE', '%' . $this->keyWord . '%');
             })
+//            ->where('username', '!=', 'root')
             ->select('users.*')
             ->selectRaw('CONCAT(users.user_firstname," ",users.user_lastname) as fullname')
             ->paginate($this->limit);
@@ -322,7 +324,7 @@ class UsersComponent extends BaseComponent
         $this->username = null;
         $this->email = null;
         $this->phone = null;
-        $this->role = null;
+        $this->role = 4;
         $this->user_started = null;
         $this->user_activated = 1;
         $this->user_verified = null;

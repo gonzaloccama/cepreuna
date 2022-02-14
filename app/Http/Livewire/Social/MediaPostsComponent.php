@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Social;
 
+use App\Models\MediaEmojis;
 use App\Models\MediaPost;
 use App\Models\MediaPostsComment;
 use App\Models\MediaPostsCommentsReaction;
@@ -12,6 +13,7 @@ use App\Models\MediaPostsSavedItem;
 use App\Models\MediaPostsVideo;
 use Carbon\Carbon;
 use DB;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Image;
@@ -70,6 +72,8 @@ class MediaPostsComponent extends Component
     public $less_comment;
     public $all_comment;
 
+    public $is_reaction;
+
     protected $attributes = [
         'photo_source' => '<b><ins>Foto o Imagen</ins></b>',
         'video_source' => '<b><ins>Video</ins></b>',
@@ -87,6 +91,7 @@ class MediaPostsComponent extends Component
         $this->privacy = 'public';
         $this->load = 10;
         $this->post_type = '';
+        $this->is_reaction = 0;
 
         $this->findUrl = [];
         $this->less_comment = 2;
@@ -127,6 +132,8 @@ class MediaPostsComponent extends Component
             ->select('media_posts.*', 'users.username')
             ->selectRaw('CONCAT(users.user_firstname," ",users.user_lastname) as fullname')
             ->paginate($this->load);
+
+        $data['emojis'] = MediaEmojis::all();
 
         $this->emit('refreshContent');
 
@@ -304,17 +311,21 @@ class MediaPostsComponent extends Component
 
     public function storePostsReaction($post_id, $user_id, $reaction)
     {
-        if ($reaction) {
+        try {
+            if ($post_id && $user_id && $reaction) {
 
-            $postsReaction = new MediaPostsReaction();
+                $is_reaction = MediaPostsReaction::where('post_id', $post_id)->where('user_id', $user_id)->first();
 
-            $postsReaction->post_id = $post_id;
-            $postsReaction->user_id = $user_id;
-            $postsReaction->reaction = $reaction;
+                if (!$is_reaction) {
+                    $postsReaction = new MediaPostsReaction();
 
-//            dd($postsReaction);
-            $postsReaction->save();
-        }
+                    $postsReaction->post_id = $post_id;
+                    $postsReaction->user_id = $user_id;
+                    $postsReaction->reaction = $reaction;
+
+                    $postsReaction->save();
+                }
+            }
 
 //        $like = [
 //            'like-my' => 'reaction_like_count', 'heart-my' => 'reaction_love_count', 'happy-my' => 'reaction_yay_count'
@@ -328,19 +339,22 @@ class MediaPostsComponent extends Component
 //        }
 //
 //        $cLike->save();
+
+        } catch (Exception $e) {
+        }
     }
 
     public function updatePostsReaction($myLike_id, $reaction)
     {
-        if ($myLike_id) {
+        try {
+            if ($myLike_id && $reaction) {
 
-            $postsReaction = MediaPostsReaction::find($myLike_id);
+                $postsReaction = MediaPostsReaction::find($myLike_id);
 
-            $postsReaction->reaction = $reaction;
-
-            $postsReaction->save();
-
-
+                if ($postsReaction) {
+                    $postsReaction->reaction = $reaction;
+                    $postsReaction->save();
+                }
 //            $like = [
 //                'like-my' => 'reaction_like_count', 'heart-my' => 'reaction_love_count', 'happy-my' => 'reaction_yay_count'
 //            ];
@@ -353,33 +367,44 @@ class MediaPostsComponent extends Component
 //            }
 //
 //            $cLike->save();
+            }
+        } catch (Exception $e) {
         }
-
     }
 
     public function storePostsCommentsReaction($comment_id, $user_id, $reaction)
     {
-        if ($reaction) {
+        try {
+            if ($reaction && $user_id && $comment_id) {
 
-            $postsCommentReaction = new MediaPostsCommentsReaction();
+                $is_reaction = MediaPostsCommentsReaction::where('comment_id', $comment_id)->where('user_id', $user_id)->first();
 
-            $postsCommentReaction->comment_id = $comment_id;
-            $postsCommentReaction->user_id = $user_id;
-            $postsCommentReaction->reaction = $reaction;
+                if (!$is_reaction) {
+                    $postsCommentReaction = new MediaPostsCommentsReaction();
 
-            $postsCommentReaction->save();
+                    $postsCommentReaction->comment_id = $comment_id;
+                    $postsCommentReaction->user_id = $user_id;
+                    $postsCommentReaction->reaction = $reaction;
+
+                    $postsCommentReaction->save();
+                }
+            }
+        } catch (Exception $e) {
         }
     }
 
     public function updatePostsCommentsReaction($myLike_id, $reaction)
     {
-        if ($myLike_id) {
+        try {
+            if ($myLike_id && $reaction) {
 
-            $postsCommentReaction = MediaPostsCommentsReaction::find($myLike_id);
+                $postsCommentReaction = MediaPostsCommentsReaction::find($myLike_id);
 
-            $postsCommentReaction->reaction = $reaction;
+                $postsCommentReaction->reaction = $reaction;
 
-            $postsCommentReaction->save();
+                $postsCommentReaction->save();
+            }
+        } catch (Exception $e) {
         }
     }
 
@@ -471,17 +496,25 @@ class MediaPostsComponent extends Component
 
     public function deleteLike($like_id)
     {
-        if ($like_id) {
-            $PostsReaction = MediaPostsReaction::find($like_id);
-            $PostsReaction->delete();
+        try {
+            if ($like_id) {
+                $PostsReaction = MediaPostsReaction::find($like_id);
+                if ($PostsReaction) {
+                    $PostsReaction->delete();
+                }
+            }
+        } catch (Exception $e) {
         }
     }
 
     public function deleteCommentsLike($like_id)
     {
-        if ($like_id) {
-            $PostsCommentsReaction = MediaPostsCommentsReaction::find($like_id);
-            $PostsCommentsReaction->delete();
+        try {
+            if ($like_id) {
+                $PostsCommentsReaction = MediaPostsCommentsReaction::find($like_id);
+                $PostsCommentsReaction->delete();
+            }
+        } catch (Exception $e) {
         }
     }
 

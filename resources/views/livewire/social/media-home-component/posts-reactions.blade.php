@@ -31,7 +31,7 @@
                     class="img-fluid" alt="">
             </a>
         @endif
-        <div class="dropdown-menu w-auto shadow border">
+        <div class="dropdown-menu w-auto shadow border rounded-0">
             @if($myLike)
                 <a class="ml-2 mr-2 reactions" href="#"
                    data-toggle="tooltip" data-placement="top"

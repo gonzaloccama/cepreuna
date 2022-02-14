@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Social;
 
+use App\Models\MediaEmojis;
 use App\Models\MediaPostsComment;
 use Livewire\Component;
 
@@ -20,11 +21,14 @@ class MediaPostsCommentComponent extends Component
         $this->node_id = $post;
         $this->node_type = "$post_type";
         $this->user_type = 'user';
+        $this->text = '';
     }
 
     public function render()
     {
-        return view('livewire.social.media-posts-comment-component');
+        $data['emojis'] = MediaEmojis::all();
+
+        return view('livewire.social.media-posts-comment-component', $data);
     }
 
     public function storePostsComment()
@@ -42,6 +46,13 @@ class MediaPostsCommentComponent extends Component
                 $this->emitTo('social.media-posts-component', 'refreshComponent');
                 $this->cleanItems();
             }
+        }
+    }
+
+    public function updateText($text)
+    {
+        if ($text && $text != '') {
+            $this->text .= ' ' . $text;
         }
     }
 

@@ -79,6 +79,7 @@
                     'name' => 'image',
                     'text' => 'Poster',
                     'required' => 1,
+                    'required_mssg' => '774x1080',
                     'type' => 'file-h',
                     'file' => $image,
                     'editFile' => $editImage,

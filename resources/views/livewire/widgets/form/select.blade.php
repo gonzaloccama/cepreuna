@@ -3,8 +3,10 @@
         <label for="{{ $name }}" class="col-4 col-form-label text-right text-uppercase">{{ $text }}
             {!! $required?'<i class="text-danger">*</i>':'' !!}
         </label>
+
         <div class="col-7">
             <select class="form-control" id="{{ $name }}" style="width: 100%"
+                    @if(isset($rol_status) && !empty($rol_status)) disabled="disabled" @endif
                     wire:model="{{ $name }}">
                 <option selected value="">Seleccione...</option>
                 @if($type != 'array')

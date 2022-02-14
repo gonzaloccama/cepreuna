@@ -7,21 +7,24 @@
                     <div class="iq-edit-list">
                         <ul class="iq-edit-profile d-flex nav nav-pills">
                             <?php
+                            $stts_pwd = !isset(auth()->user()->user_google_id);
                             $tabs_panes = [
-                                (object)['tab' => 'personal-information', 'name' => 'Información Personal'],
-                                (object)['tab' => 'chang-pwd', 'name' => 'Cambiar la contraseña'],
-                                (object)['tab' => 'links-social', 'name' => 'Redes Sociales'],
-                                (object)['tab' => 'privacy', 'name' => 'Privacidad'],
+                                (object)['tab' => 'personal-information', 'name' => 'Información Personal', 'stts' => 1],
+                                (object)['tab' => 'chang-pwd', 'name' => 'Cambiar la contraseña', 'stts' => $stts_pwd],
+                                (object)['tab' => 'links-social', 'name' => 'Redes Sociales', 'stts' => 1],
+                                (object)['tab' => 'privacy', 'name' => 'Privacidad', 'stts' => 1],
                             ];
                             ?>
                             @foreach($tabs_panes as $tab)
-                                <li class="col-md-3 p-0">
-                                    <a class="nav-link rounded-0 font-rajdhani font-size-18 {{ $tab_pane == $tab->tab ? 'active' : '' }}"
-                                       wire:click.prevent="active_tab('{{ $tab->tab }}')"
-                                       data-toggle="pill" href="#{{ $tab->tab }}">
-                                        {{ $tab->name }}
-                                    </a>
-                                </li>
+                                @if($tab->stts)
+                                    <li class="col-md-3 p-0">
+                                        <a class="nav-link rounded-0 font-rajdhani font-size-18 {{ $tab_pane == $tab->tab ? 'active' : '' }}"
+                                           wire:click.prevent="active_tab('{{ $tab->tab }}')"
+                                           data-toggle="pill" href="#{{ $tab->tab }}">
+                                            {{ $tab->name }}
+                                        </a>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

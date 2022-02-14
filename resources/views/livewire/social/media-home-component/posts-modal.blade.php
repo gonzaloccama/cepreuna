@@ -135,7 +135,7 @@
                             {{--                        <img src="{{ $video_source->temporaryUrl() }}"--}}
                             {{--                             class="img-fluid rounded w-100 shadow-sm"--}}
                             {{--                             alt="" width="120">--}}
-                            <video controls class="img-fluid w-100 shadow-sm">
+                            <video controls class="img-fluid w-100 shadow-sm player" playsinline>
                                 <source src="{{ $video_source->temporaryUrl() }}" type="video/mp4">
                                 Your browser does not support HTML video.
                             </video>

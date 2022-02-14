@@ -28,7 +28,8 @@
                                 <div class="col-md-4">
                                     <div class="user-content">
                                         <h5 class="user-name text-primary mb-0">Inicio del CEPRE - UNAP</h5>
-                                        <span class="user-occupation">Inicio de clases {{ $this->dateSpanish($banner->start_class) }}</span>
+                                        <span
+                                            class="user-occupation">Inicio de clases {{ $this->dateSpanish($banner->start_class) }}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -150,7 +151,8 @@
                                                 <b class="sub-title"><u>FECHA FINAL DE INSCRIPCIONES</u>:
                                                     <br> {{ $this->dateSpanish($cycle->finish_register) }}</b>
                                                 <hr>
-                                                <b><u>INICIO DE CLASES</u>: <br> {{ $this->dateSpanish($cycle->start_class) }}</b>
+                                                <b><u>INICIO DE CLASES</u>:
+                                                    <br> {{ $this->dateSpanish($cycle->start_class) }}</b>
                                                 <hr>
                                                 @php
                                                     $status = Carbon\Carbon::now() <= $cycle->finish_register;
@@ -215,15 +217,15 @@
                                     <div class="testimonial-content">
 
                                         <div class="service-img shadow">
-                                            <a href="{{ $service->url }}" class="card card-img p-5 rounded-0"
+                                            <a href="{{ $service->url }}" class="card card-img p-3 rounded-0"
                                                target="_blank">
                                                 <img
                                                     src="{{ asset('assets/images/service/medium-size/').'/'.$service->image }}"
-                                                    alt="{{ $service->text }}" class="img-fluid shadow">
+                                                    alt="{{ $service->text }}" class="img-fluid">
                                             </a>
                                             <div class="add-action text-center">
-                                                <h6 class="text-white mb-0"><a
-                                                        href="{{ $service->url }}">{!! $text !!}</a>
+                                                <h6 class="text-white mb-0">
+                                                    <a href="{{ $service->url }}">{!! $text !!}</a>
                                                 </h6>
                                             </div>
                                         </div>

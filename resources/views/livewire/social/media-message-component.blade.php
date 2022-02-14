@@ -129,12 +129,19 @@ $auth_status = auth()->user()->user_is_online == 1 ? 'status-online' : 'status-o
                                                         </div>
                                                     </a>
                                                 </li>
+
                                                 <?php
                                                 unset($_img);
                                                 unset($_profile);
                                                 ?>
                                             @endif
                                         @endforeach
+                                        <li class="text-center">
+                                            @if($moreUsers <= $users->count())
+                                                <a href="javascript:;" wire:click.prevent="updateMoreUsers">Ver
+                                                    más</a>
+                                            @endif
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -162,8 +169,6 @@ $auth_status = auth()->user()->user_is_online == 1 ? 'status-online' : 'status-o
 @endpush
 
 @push('scripts')
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             window.livewire.on('closeModalPost', () => {
@@ -191,6 +196,7 @@ $auth_status = auth()->user()->user_is_online == 1 ? 'status-online' : 'status-o
             });
         });
     </script>
+
 @endpush
 
 

@@ -14,72 +14,98 @@
             <div class="col-md-6 bg-white pt-5">
                 <div class="sign-in-from" style="height: 550px; overflow-y: auto;">
                     <h1 class="mb-0 font-rajdhani weight-600">Iniciar sesión</h1>
-                    <p>Ingrese su dirección de correo electrónico y contraseña para acceder.</p>
-                    <form class="mt-4">
-                        @csrf
-                        @guest
-                            <div class="form-group">
-                                <label for="email" class="font-rajdhani-18 weight-500"
-                                       style="color: #696969; text-transform: uppercase;">Dirección
-                                    de correo electrónico</label>
-                                <input type="email" class="form-control mb-0  @error('email') is-invalid @enderror"
-                                       id="email" placeholder="Correo electrónico" wire:model="email">
-                                @error('email')
-                                <div class="invalid-feedback">
-                                    {!! $message !!}
-                                </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password" class="font-rajdhani-18 weight-500"
-                                       style="color:  #696969; text-transform: uppercase;">Contraseña</label>
-                                <a href="#" class="float-right roboto">¿Se te olvidó tu contraseña?</a>
-                                <div class="input-group">
-                                    <input type="password"
-                                           class="form-control mb-0 @error('password') border-invalid @enderror"
-                                           id="password" wire:model="password" placeholder="Contraseña">
-                                    <button id="toggle-password" type="button" class="d-none"
-                                            aria-label="Show password as plain text. Warning: this will display your password on the screen.">
-                                    </button>
-                                </div>
-                                @error('password')
-                                <div class="text-danger"
-                                     style="margin-top: .25rem; font-size: .75rem; color: #f0643b !important;">
-                                    {!! $message !!}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="d-inline-block w-100">
-                                {{--                                <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">--}}
-                                {{--                                    <input type="checkbox" class="custom-control-input" id="customCheck1">--}}
-                                {{--                                    <label class="custom-control-label" for="customCheck1">Remember Me</label>--}}
-                                {{--                                </div>--}}
-                                <button type="submit" class="btn btn-primary float-right" wire:click.prevent="login">
-                                    <i class="ri-login-box-line"></i>Iniciar sesión
-                                </button>
-                                <a href="{{ route('auth.google') }}" class="btn btn-google float-right">
-                                    <i class="ri-google-fill"></i>Google
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link {{ $tab == 1 ? 'active' : ''}}" id="home-tab" data-toggle="tab"
+                               href="#home" role="tab" wire:click.prevent="updateTab(1)"
+                               aria-controls="home" aria-selected="true">Estudiante
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link {{ $tab == 2 ? 'active' : ''}}" id="profile-tab" data-toggle="tab"
+                               href="#profile" role="tab" wire:click.prevent="updateTab(2)"
+                               aria-controls="profile" aria-selected="false">Administrador
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade {{ $tab == 1 ? 'show active' : ''}}" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <p>Inicie sesión con tu Cuenta Institucional de CEPREUNA.</p>
+                            <div class="text-center mt-5">
+                                <a href="{{ route('auth.google') }}" class="btn btn-google mb-5">
+                                    <i class="ri-google-fill"></i>Inicar sesion con Google
                                 </a>
                             </div>
+                        </div>
+                        <div class="tab-pane fade {{ $tab == 2 ? 'show active' : ''}}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <p>Ingrese su dirección de correo electrónico y contraseña para acceder.</p>
+                            <form class="mt-4">
+                                @csrf
+                                @guest
+                                    <div class="form-group">
+                                        <label for="email" class="font-rajdhani-18 weight-500"
+                                               style="color: #696969; text-transform: uppercase;">Dirección
+                                            de correo electrónico</label>
+                                        <input type="email"
+                                               class="form-control mb-0  @error('email') is-invalid @enderror"
+                                               id="email" placeholder="Correo electrónico" wire:model="email">
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            {!! $message !!}
+                                        </div>
+                                        @enderror
+                                    </div>
 
-                            <div class="sign-info">
+                                    <div class="form-group">
+                                        <label for="password" class="font-rajdhani-18 weight-500"
+                                               style="color:  #696969; text-transform: uppercase;">Contraseña</label>
+                                        <a href="#" class="float-right roboto">¿Se te olvidó tu contraseña?</a>
+                                        <div class="input-group">
+                                            <input type="password"
+                                                   class="form-control mb-0 @error('password') border-invalid @enderror"
+                                                   id="password" wire:model="password" placeholder="Contraseña">
+                                            <button id="toggle-password" type="button" class="d-none"
+                                                    aria-label="Show password as plain text. Warning: this will display your password on the screen.">
+                                            </button>
+                                        </div>
+                                        @error('password')
+                                        <div class="text-danger"
+                                             style="margin-top: .25rem; font-size: .75rem; color: #f0643b !important;">
+                                            {!! $message !!}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="d-inline-block w-100">
+                                        {{--                                <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">--}}
+                                        {{--                                    <input type="checkbox" class="custom-control-input" id="customCheck1">--}}
+                                        {{--                                    <label class="custom-control-label" for="customCheck1">Remember Me</label>--}}
+                                        {{--                                </div>--}}
+                                        <button type="submit" class="btn btn-primary float-right"
+                                                wire:click.prevent="login">
+                                            <i class="ri-login-box-line"></i>Iniciar sesión
+                                        </button>
+
+                                    </div>
+
+                                    <div class="sign-info">
                                 <span class="dark-color d-inline-block line-height-2">¿No tienes una cuenta? <a
                                         href="{{ route('register') }}" class="roboto">Registrarme</a></span>
-                                <ul class="iq-social-media">
-                                    <li><a href="#"><i class="ri-facebook-box-line"></i></a></li>
-                                    <li><a href="#"><i class="ri-twitter-line"></i></a></li>
-                                    <li><a href="#"><i class="ri-instagram-line"></i></a></li>
-                                </ul>
-                            </div>
-                        @else
-                            <div class="alert alert-success rounded-0">
-                                Ya ha iniciado sesión en la aplicación.
-                            </div>
-                        @endguest
+                                        <ul class="iq-social-media">
+                                            <li><a href="#"><i class="ri-facebook-box-line"></i></a></li>
+                                            <li><a href="#"><i class="ri-twitter-line"></i></a></li>
+                                            <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+                                        </ul>
+                                    </div>
+                                @else
+                                    <div class="alert alert-success rounded-0">
+                                        Ya ha iniciado sesión en la aplicación.
+                                    </div>
+                                @endguest
 
 
-                    </form>
+                            </form>
+                        </div>
+                    </div>
 
                     @if (session()->has('error'))
                         <p class="note mb-3 mt-3 font-rajdhani-16 note-danger">

@@ -88,6 +88,7 @@
                     'name' => 'newImage',
                     'text' => 'Imagen',
                     'required' => 1,
+                    'required_mssg' => '210x340',
                     'type' => 'file-h',
                     'file' => $newImage,
                     'editFile' => $editImage,

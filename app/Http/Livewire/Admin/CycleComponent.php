@@ -55,8 +55,8 @@ class CycleComponent extends BaseComponent
         'start_class' => 'required|date_format:Y-m-d',
         'finish_class' => 'required|date_format:Y-m-d',
         'go_link' => 'required|url',
-        'image' => 'required|mimes:jpeg,jpg,png|max:1024',
-        'newImage' => 'nullable|mimes:jpeg,jpg,png|max:1024'
+        'image' => 'required|mimes:jpeg,jpg,png|max:520',
+        'newImage' => 'nullable|mimes:jpeg,jpg,png|max:520'
     ];
 
     public function mount()

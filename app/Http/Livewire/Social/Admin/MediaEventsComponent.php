@@ -14,6 +14,8 @@ class MediaEventsComponent extends BaseComponent
     use WithPagination;
     use WithFileUploads;
 
+    public $event_title;
+
     public $headers = [
         'event_title' => 'Evento',
         'fullname' => 'Admin',
@@ -67,5 +69,34 @@ class MediaEventsComponent extends BaseComponent
         $this->emit('refreshComponent');
 
         return view('livewire.social.admin.media-events-component', $data)->layout('layouts.backend');
+    }
+
+    public function openEdit($id = 0, $view = false)
+    {
+        $this->itemId = $id;
+        $data = MediaEvent::where('id', $this->itemId)->first();
+
+        $this->event_title = $data->event_title;
+
+        if (!$view) {
+            $this->frame = 'edit';
+            $this->emit('refreshSection');
+        } else {
+            $this->frame = 'view';
+        }
+    }
+
+    public function closeFrame()
+    {
+        $this->frame = 'index';
+        $this->cleanItems();
+    }
+
+    public function cleanItems()
+    {
+        $this->event_title = null;
+
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
 }

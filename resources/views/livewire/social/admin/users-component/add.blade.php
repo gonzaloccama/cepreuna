@@ -34,7 +34,7 @@
                         $dt = [
                             'name' => 'user_verified',
                             'text' => 'Usuario verificado',
-                            'required' => 1,
+                            'required' => 0,
                             'type' => 'checkbox-h',
                         ];
                         ?>
@@ -44,7 +44,7 @@
                         $dt = [
                             'name' => 'user_banned',
                             'text' => 'Usuario baneado',
-                            'required' => 1,
+                            'required' => 0,
                             'type' => 'checkbox-h',
                         ];
                         ?>
@@ -54,7 +54,7 @@
                         $dt = [
                             'name' => 'user_activated',
                             'text' => 'Usuario activo',
-                            'required' => 1,
+                            'required' => 0,
                             'type' => 'checkbox-h',
                         ];
                         ?>
@@ -67,6 +67,7 @@
                             'required' => 1,
                             'type' => 'role',
                             'options' => \App\Models\Role::all(),
+                            'rol_status' => !(in_array(auth()->user()->username, ['superadmin', 'root'])),
                         ];
                         ?>
                         @include('livewire.widgets.form.select', $dt)
@@ -105,7 +106,7 @@
                         $dt = [
                             'name' => 'user_cover',
                             'text' => 'Avatar',
-                            'required' => 1,
+                            'required' => 0,
                             'type' => 'file-h',
                             'file' => $user_cover,
                             'editFile' => $edit_user_cover,
@@ -169,7 +170,7 @@
                             $dt = [
                                 'name' => 'user_birthdate',
                                 'text' => 'Fecha de nacimiento',
-                                'required' => 1,
+                                'required' => 0,
                                 'type' => 'date-h',
                             ];
                             ?>
@@ -179,7 +180,7 @@
                             $dt = [
                                 'name' => 'user_gender',
                                 'text' => 'Sexo',
-                                'required' => 1,
+                                'required' => 0,
                                 'type' => 'gender',
                                 'options' => \App\Models\Gender::all(),
                             ];
@@ -190,7 +191,7 @@
                             $dt = [
                                 'name' => 'user_biography',
                                 'text' => 'Biografía',
-                                'required' => 1,
+                                'required' => 0,
                                 'type' => 1,
                             ];
                             ?>
@@ -206,7 +207,7 @@
                             $dt = [
                                 'name' => 'user_address',
                                 'text' => 'Dirección',
-                                'required' => 1,
+                                'required' => 0,
                                 'type' => 'text-h',
                             ];
                             ?>
@@ -216,7 +217,7 @@
                             $dt = [
                                 'name' => 'user_region',
                                 'text' => 'Región',
-                                'required' => 1,
+                                'required' => 0,
                                 'type' => 'region',
                                 'options' => \App\Models\Region::all(),
                             ];
@@ -233,7 +234,7 @@
                             $dt = [
                                 'name' => 'user_province',
                                 'text' => 'Provincia',
-                                'required' => 1,
+                                'required' => 0,
                                 'type' => 'array',
                                 'options' => $p,
                             ];

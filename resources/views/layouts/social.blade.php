@@ -128,8 +128,6 @@
 <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/plugins/baguetteBox/baguetteBox.js') }}"></script>
 
-
-
 @livewireScripts
 
 @stack('scripts')

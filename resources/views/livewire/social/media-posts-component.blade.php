@@ -217,7 +217,10 @@
                                                         {{ $comment->user->fullname }}
                                                     </a>
                                                 </h6>
-                                                <p class="mb-0">{{ $comment->text }}</p>
+                                                <p class="mb-0" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
+                                                    @include('livewire.widgets.icon-regex.pattern-comment-emojis', ['content' => $comment->text, 'w' => 30])
+                                                </p>
+                                                {{--                                                <p class="mb-0">{{ $comment->text }}</p>--}}
                                             </div>
                                             <div style="font-size: 12px; font-weight: 600;"
                                                  class="d-flex flex-wrap align-items-center comment-activity ml-2 pt-1 pb-1">

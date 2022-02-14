@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8"/>
     <title>@stack('title') | Admin | {{ config('app.name', 'CEPRE-UNAP') }}</title>
@@ -104,6 +104,10 @@
             border-radius: 10px;
             -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
             background-color: #00365A;
+        }
+
+        .font-10 {
+           font-size: 10px;
         }
     </style>
 

@@ -50,7 +50,7 @@
                         </a>
                         <div class="iq-sub-dropdown iq-user-dropdown">
                             <div class="iq-card shadow-none m-0">
-                                <div class="iq-card-body p-0 ">
+                                <div class="iq-card-body p-0 " style="border-radius: 0">
                                     <div class="bg-primary p-3 line-height">
                                         <h6 class="mb-0 text-white line-height">Hola {{ auth()->user()->fullname }}</h6>
                                         <span class="text-white font-size-12">disponible</span>
@@ -107,7 +107,7 @@
                                         </div>
                                     </a>
                                     <div class="d-inline-block w-100 text-center p-3">
-                                        <a class="bg-primary iq-sign-btn" href="{{ route('logout') }}"
+                                        <a class="bg-primary iq-sign-btn rounded-0" href="{{ route('logout') }}"
                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                            role="button">
                                             Cerrar sesión<i class="ri-login-box-line ml-2"></i>

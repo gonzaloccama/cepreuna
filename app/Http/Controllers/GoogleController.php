@@ -24,13 +24,14 @@ class GoogleController extends Controller
             $user = Socialite::driver('google')->user();
 
             $verify_user = $this->findUser($user->email, $user->id);
-//            $verify_user = $this->findUser('11000000@cepreuna.edu.pe', '114983635457625325000');
 
-            if ($verify_user->status && isset($verify_user->data->Estado)) {
-                if ($verify_user->data->Estado != 'Inactivo') {
+            if ($verify_user->status == true) {
+
+                if ($verify_user->data->Estado == 'Activo') {
+
                     $findUser = User::where('user_google_id', $user->id)->first();
 
-                    if (isset($findUser) && !empty($findUser)) {
+                    if ($findUser) {
                         $findUser->update([
                             'user_google_id' => $user->id,
                         ]);
@@ -40,12 +41,12 @@ class GoogleController extends Controller
 
                         $register = new User();
 
-                        $register->email = $user->email;
+                        $register->email = mb_convert_case($user->email, MB_CASE_LOWER, "UTF-8");
                         $register->user_google_id = $user->id;
                         $register->role = 4;
                         $register->phone = $verify_user->data->Celular;
-                        $register->user_firstname = $verify_user->data->Nombres;
-                        $register->user_lastname = $verify_user->data->Apellidos;
+                        $register->user_firstname = mb_convert_case($verify_user->data->Nombres, MB_CASE_TITLE, "UTF-8");
+                        $register->user_lastname = mb_convert_case($verify_user->data->Apellidos, MB_CASE_TITLE, "UTF-8");
                         $register->user_dni = $verify_user->data->Dni;
 
                         $register->save();
@@ -74,7 +75,8 @@ class GoogleController extends Controller
             $client = new Client(['verify' => false]);
             try {
                 $response = $client
-                    ->request('GET', 'https://test.cepreuna.edu.pe/api/social/validate?_token=' . $token
+//                    ->request('GET', 'https://test.cepreuna.edu.pe/api/social/validate?_token=' . $token
+                    ->request('GET', 'https://sistemas.cepreuna.edu.pe/api/social/validate?_token=' . $token
                         . '&email=' . $email . '&idgsuite=' . $idgsuite)
                     ->getBody();
                 return json_decode($response);

@@ -84,7 +84,7 @@
             $post_video = \App\Models\MediaPostsVideo::where('post_id', $data->id)->first();
         @endphp
         <div class="col-md-12 mb-3 text-center">
-            <video class="video-container img-fluid w-100 shadow-sm" controls>
+            <video class="video-container img-fluid w-100 shadow-sm player" playsinline controls>
                 <source src="{{ asset('assets/uploads/users/posts-videos/').'/'.$post_video->source }}"
                         type="video/mp4">
                 Your browser does not support HTML video.
@@ -119,3 +119,4 @@
     </div>
     @php $findUrl=[] @endphp
 @endif
+

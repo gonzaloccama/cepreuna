@@ -16,9 +16,8 @@ $profile = auth()->user()->user_cover ? auth()->user()->user_cover : $img;
 
 
 @push('styles')
-
+    <link rel="stylesheet" href="{{ asset('assets/plugins/plyr/plyr.css') }}"/>
     <style>
-
         .upload label {
             cursor: pointer;
         }
@@ -46,7 +45,7 @@ $profile = auth()->user()->user_cover ? auth()->user()->user_cover : $img;
 @endpush
 
 @push('scripts')
-
+    <script src="{{ asset('assets/plugins/plyr/plyr.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -61,8 +60,18 @@ $profile = auth()->user()->user_cover ? auth()->user()->user_cover : $img;
 
             window.livewire.on('refreshContent', () => {
                 lightbox('.baguetteBoxThree');
+                const players = {};
+
+                Array.from(document.querySelectorAll('.player')).forEach(video => {
+                    players[video.id] = new Plyr(video, {});
+                });
             });
             lightbox('.baguetteBoxThree');
+            const players = {};
+
+            Array.from(document.querySelectorAll('.player')).forEach(video => {
+                players[video.id] = new Plyr(video, {});
+            });
         });
 
         $(document).ready(function () {

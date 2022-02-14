@@ -2,12 +2,6 @@
 <div class="project-area py-115">
     @php
         $result = \App\Models\Employment::where('status', '1')->where('id', $viewDetailID)->first();
-        $file_pattern_id = '/(file\/d\/)(.*)(\/)/';
-        $idFileUrl = '';
-
-        if (preg_match_all($file_pattern_id, $result->url, $matches)) {
-             $idFileUrl = $matches[0];
-        }
         $schedules = json_decode($result->schedule);
         $files = json_decode($result->files);
     @endphp
@@ -25,6 +19,10 @@
             </div>
             <div class="row">
                 <div class="col-xl-5 col-lg-5" style="text-align: justify !important;">
+                    <h5 class="mt-10 mb-2">
+                        {{ $this->dateSpanish($result->start_employments) }}
+                        - {{ $this->dateSpanish($result->end_employments) }}
+                    </h5>
                     <p class="font-size-16 mb-0">{{ $result->description }}</p>
                     <h5 class="mt-10 mb-2">Cronograma</h5>
                     <table class="table">
@@ -60,15 +58,16 @@
                         @endforeach
                     </table>
 
-                    <div class="mt-10 mb-2">
-                        <div class="user-content mt-3">
-                            <div class="button-wrap">
-                                <a class="btn btn-custom btn-primary border-bottom btn-white-hover"
-                                   href="{{ $result->go_link }}" target="_blank">Pre-inscripciones</a>
+                    @if(Carbon\Carbon::now() <= $result->end_employments)
+                        <div class="mt-10 mb-2">
+                            <div class="user-content mt-3">
+                                <div class="button-wrap">
+                                    <a class="btn btn-custom btn-primary border-bottom btn-white-hover"
+                                       href="{{ $result->go_link }}" target="_blank">Pre-inscripciones</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    @endif
 
                     <h5 class="mt-10 mb-2">Resultados</h5>
                     <table class="table">
@@ -86,6 +85,9 @@
                             </tr>
                         @endforeach
                     </table>
+
+                </div>
+                <div class="col-xl-7 col-lg-7" style="text-align: justify !important;">
                     <h5 class="mt-10 mb-2">Estado</h5>
                     <?php
                     $status = Carbon\Carbon::now() <= $result->end_employments;
@@ -93,15 +95,9 @@
                     ?>
                     <span
                         class="badge {{ $status?' text-success badge-success-1' :'text-danger badge-danger-1' }} rounded-0 mb-5">
-                    {{ $status?'Activo':'Cerrado' }}</span>
-                </div>
-                <div class="col-xl-7 col-lg-7" style="text-align: justify !important;">
+                    {{ $status?'Activo':'Finalizado' }}</span>
                     @if($result->is_url)
-                        <object style="width:100%; height: 500px" allowfullscreen sandbox
-                                data="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true">
-                            <embed style="width:100%; height: 500px" allowfullscreen sandbox
-                                   src="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true?">
-                        </object>
+                        @include('livewire.widgets.view-drive-page', ['url_pdf' => $result->url])
                     @else
                         <object style="width:100%; height: 600px"
                                 data="{{ asset('assets/files/employment/').'/'.$result->file_employment }}?#zoom=auto&scrollbar=0&toolbar=1&navpanes=0"

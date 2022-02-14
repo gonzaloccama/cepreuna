@@ -536,6 +536,7 @@
     .form-control.border-invalid {
         border-color: var(--iq-danger) !important;
     }
+
     .icon-button__badge {
         position: absolute;
         top: 19px;
@@ -563,4 +564,15 @@
         border-color: #E34133;
     }
 
+    /*** emojis ***/
+    .media-emoji img{
+        padding: 5px;
+        border: 1px dashed rgba(59, 63, 92, 0.15);
+        margin-top: 1px;
+        margin-bottom: 2px;
+    }
+
+    .media-emoji img:hover {
+        background-color: rgba(59, 63, 92, 0.12);
+    }
 </style>

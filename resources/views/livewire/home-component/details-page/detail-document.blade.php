@@ -23,11 +23,7 @@
             </div>
 
             @if($result->is_url)
-                <object style="width:100%; height: 500px"  allowfullscreen sandbox
-                        data="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true">
-                    <embed style="width:100%; height: 500px"  allowfullscreen sandbox
-                           src="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true?">
-                </object>
+                @include('livewire.widgets.view-drive-page', ['url_pdf' => $result->url])
             @else
                 <object style="width:100%; height: 500px"
                         data="{{ asset('assets/files/documents/').'/'.$result->file }}?#zoom=auto&scrollbar=0&toolbar=1&navpanes=0">

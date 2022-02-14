@@ -2,12 +2,6 @@
 <div class="project-area py-115">
     @php
         $result = \App\Models\Statement::find($viewDetailID);
-        $file_pattern_id = '/(file\/d\/)(.*)(\/)/';
-        $idFileUrl = '';
-
-        if (preg_match_all($file_pattern_id, $result->url, $matches)) {
-             $idFileUrl = $matches[0];
-        }
     @endphp
     <div class="container card rounded-0 shadow">
         <div class="card-body">
@@ -23,13 +17,7 @@
             </div>
 
             @if($result->is_url)
-                <object style="width:100%; height: 500px" allowfullscreen sandbox
-                        data="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true"
-                        >
-                    <embed style="width:100%; height: 500px;" allowfullscreen sandbox
-                        src="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true"
-                        >
-                </object>
+                @include('livewire.widgets.view-drive-page', ['url_pdf' => $result->url])
             @else
                 <object style="width:100%; height: 500px" allowfullscreen sandbox
                         data="{{ asset('assets/files/statement/').'/'.$result->file }}?"

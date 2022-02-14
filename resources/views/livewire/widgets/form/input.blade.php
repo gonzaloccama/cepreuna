@@ -1,7 +1,13 @@
 @if($type)
     <div class="form-group row">
         <label for="{{ $name }}" class="col-4 col-form-label text-right text-uppercase">{{ $text }}
-            {!! $required?'<i class="text-danger">*</i>':'' !!}
+            <?php
+                $txt = '';
+                if (isset($required_mssg) && !empty($required_mssg)){
+                    $txt = '<span class="text-danger font-10">(resolución: <b>'.$required_mssg.'</b>)</span>';
+                }
+            ?>
+            {!! $required ? $txt . '<i class="text-danger">*</i>':'' !!}
         </label>
         <div class="col-7">
             @if($type == 'text-h')
