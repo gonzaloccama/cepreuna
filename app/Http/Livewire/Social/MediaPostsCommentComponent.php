@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Social;
 use App\Models\MediaEmojis;
 use App\Models\MediaPostsComment;
 use Livewire\Component;
+use Exception;
 
 class MediaPostsCommentComponent extends Component
 {
@@ -33,20 +34,22 @@ class MediaPostsCommentComponent extends Component
 
     public function storePostsComment()
     {
-        if ($this->text != null) {
-            $postsComment = new MediaPostsComment();
+        try {
+            if ($this->text != null) {
+                $postsComment = new MediaPostsComment();
 
-            $postsComment->node_id = $this->node_id;
-            $postsComment->node_type = $this->node_type;
-            $postsComment->user_id = $this->user_id;
-            $postsComment->user_type = $this->user_type;
-            $postsComment->text = $this->text;
+                $postsComment->node_id = $this->node_id;
+                $postsComment->node_type = $this->node_type;
+                $postsComment->user_id = $this->user_id;
+                $postsComment->user_type = $this->user_type;
+                $postsComment->text = $this->text;
 //        $postsComment->image = $this->image;
-            if ($postsComment->save()) {
-                $this->emitTo('social.media-posts-component', 'refreshComponent');
-                $this->cleanItems();
+                if ($postsComment->save()) {
+                    $this->emitTo('social.media-posts-component', 'refreshComponent');
+                    $this->cleanItems();
+                }
             }
-        }
+        }catch (Exception $e){}
     }
 
     public function updateText($text)
