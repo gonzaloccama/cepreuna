@@ -4,62 +4,64 @@
     $banner = \App\Models\CycleAcademy::where('status', '1')->orderBy('created_at', 'desc')->first();
     ?>
     <div class="col-md-12">
-        <div class="card shadow  rounded-0">
-            <div class="card-body row g-lg-9">
-                <div class="col-lg-12 col-md-12">
-                    <div class="banner-item text-white"
-                         style="background-image: url('{{ asset('assets/images/banner/inner-bg/1-1.png') }}'); background-size: cover;"
-                        {{--                     data-bg-image="{{ asset('assets/images/banner/inner-bg/1-1.png') }}"--}}
-                    >
-                        <div class="banner-content text-center">
-                            <div class="row">
-                                <div class="col-md-12 pt-0">
-                                    <h3 class="title mb-3">{{ $banner->cicle }}</h3>
-                                </div>
-                                <hr>
+        @if(filled($banner))
+            <div class="card shadow  rounded-0">
+                <div class="card-body row g-lg-9">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="banner-item text-white"
+                             style="background-image: url('{{ asset('assets/images/banner/inner-bg/1-1.png') }}'); background-size: cover;"
+                            {{--                     data-bg-image="{{ asset('assets/images/banner/inner-bg/1-1.png') }}"--}}
+                        >
+                            <div class="banner-content text-center">
+                                <div class="row">
+                                    <div class="col-md-12 pt-0">
+                                        <h3 class="title mb-3">{{ $banner->cicle }}</h3>
+                                    </div>
+                                    <hr>
 
-                                <div class="col-md-4">
-                                    <div class="user-content">
-                                        <h5 class="user-name text-primary mb-0">Inscripciones</h5>
-                                        <span class="user-occupation">Inscripciones desde {{ $this->dateSpanish($banner->start_register) }}
-                                        hasta {{ $this->dateSpanish($banner->finish_register) }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="user-content">
-                                        <h5 class="user-name text-primary mb-0">Inicio del CEPREUNA</h5>
-                                        <span
-                                            class="user-occupation">Inicio de clases {{ $this->dateSpanish($banner->start_class) }}</span>
-                                    </div>
-                                </div>
-
-                                @if(Carbon\Carbon::now() <= $banner->finish_register)
-                                    <div class="col-md-4">
-                                        <div class="user-content mt-3">
-                                            <div class="button-wrap">
-                                                <a class="btn btn-custom btn-primary btn-white-hover"
-                                                   href="{{ $banner->go_link }}" target="_blank">Inscribirme</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
                                     <div class="col-md-4">
                                         <div class="user-content">
-                                            <h5 class="user-name text-primary mb-0">Culminación del CEPREUNA</h5>
-                                            <span
-                                                class="user-occupation">Finalización {{ $this->dateSpanish($banner->finish_class) }}</span>
+                                            <h5 class="user-name text-primary mb-0">Inscripciones</h5>
+                                            <span class="user-occupation">Inscripciones desde {{ $this->dateSpanish($banner->start_register) }}
+                                        hasta {{ $this->dateSpanish($banner->finish_register) }}</span>
                                         </div>
                                     </div>
-                                @endif
+                                    <div class="col-md-4">
+                                        <div class="user-content">
+                                            <h5 class="user-name text-primary mb-0">Inicio del CEPREUNA</h5>
+                                            <span
+                                                class="user-occupation">Inicio de clases {{ $this->dateSpanish($banner->start_class) }}</span>
+                                        </div>
+                                    </div>
 
+                                    @if(Carbon\Carbon::now() <= $banner->finish_register)
+                                        <div class="col-md-4">
+                                            <div class="user-content mt-3">
+                                                <div class="button-wrap">
+                                                    <a class="btn btn-custom btn-primary btn-white-hover"
+                                                       href="{{ $banner->go_link }}" target="_blank">Inscribirme</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-md-4">
+                                            <div class="user-content">
+                                                <h5 class="user-name text-primary mb-0">Culminación del CEPREUNA</h5>
+                                                <span
+                                                    class="user-occupation">Finalización de clases {{ $this->dateSpanish($banner->finish_class) }}</span>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
-
             </div>
-        </div>
+        @endif
     </div>
 </div>
 <!-- Banner Area End Here -->

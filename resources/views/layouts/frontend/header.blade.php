@@ -74,7 +74,7 @@
                                         <div class="dropdown-menu dropdown-menu-right p-1"
                                              aria-labelledby="dropdownMenuButton">
                                             @auth
-                                                @if(auth()->user()->role == 1)
+                                                @if(auth()->user()->role == 1 || auth()->user()->role == 9)
                                                     <div
                                                         class="hover-user row align-items-center"
                                                         onclick="location.href='{{ route('admin.users') }}';">

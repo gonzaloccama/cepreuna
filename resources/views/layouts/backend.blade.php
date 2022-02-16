@@ -7,6 +7,7 @@
     <meta content="Admin CEPRE-UNAP" name="description"/>
     <meta content="CEPRE-UNAP" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}">
@@ -240,6 +241,14 @@
 </script>
 
 @stack('scripts')
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 
 </body>
 </html>

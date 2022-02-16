@@ -278,52 +278,60 @@ class MediaPostsComponent extends Component
                 $this->cleanItemsDel();
             }
         } catch (Exception $e) {
+            $this->emit('errorException');
         }
     }
 
     public function postShared($post_id = null)
     {
-        if ($post_id) {
-            $this->origin_id = $post_id;
-            $this->post_type = 'shared';
-        } else {
+        try {
+            if ($post_id) {
+                $this->origin_id = $post_id;
+                $this->post_type = 'shared';
+            } else {
 
-            $post = new MediaPost();
+                $post = new MediaPost();
 
-            $post->user_id = auth()->user()->id;
-            $post->user_type = 'user';
-            $post->in_group = '0';
-            $post->group_id = 0;
-            $post->group_approved = '1';
-            $post->in_event = '0';
-            $post->event_id = 0;
-            $post->event_approved = '0';
-            $post->post_type = $this->post_type;
-            $post->origin_id = $this->origin_id;
-            $post->privacy = $this->privacy;
-            $post->text = $this->text;
-            $post->shares = 0;
+                $post->user_id = auth()->user()->id;
+                $post->user_type = 'user';
+                $post->in_group = '0';
+                $post->group_id = 0;
+                $post->group_approved = '1';
+                $post->in_event = '0';
+                $post->event_id = 0;
+                $post->event_approved = '0';
+                $post->post_type = $this->post_type;
+                $post->origin_id = $this->origin_id;
+                $post->privacy = $this->privacy;
+                $post->text = $this->text;
+                $post->shares = 0;
 
-            if ($post->save()) {
-                $this->emit('closeModalPostShared');
-                $this->cleanItems();
+                if ($post->save()) {
+                    $this->emit('closeModalPostShared');
+                    $this->cleanItems();
+                }
             }
+        }catch (Exception $e){
+            $this->emit('errorException');
         }
-
     }
 
     public function PostSaved($post_id)
     {
-        if ($post_id) {
-            $postSaved = new MediaPostsSavedItem();
+        try {
+            if ($post_id) {
+                $postSaved = new MediaPostsSavedItem();
 
-            $postSaved->post_id = $post_id;
-            $postSaved->user_id = auth()->user()->id;
+                $postSaved->post_id = $post_id;
+                $postSaved->user_id = auth()->user()->id;
 
-            if ($postSaved->save()) {
-                $this->emit('alertSaved');
-                $this->cleanItems();
+                if ($postSaved->save()) {
+                    $this->emit('alertSaved');
+                    $this->cleanItems();
+                }
             }
+        }catch (Exception $e){
+            $this->emit('errorException');
         }
     }
 

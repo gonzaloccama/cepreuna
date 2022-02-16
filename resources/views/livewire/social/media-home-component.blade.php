@@ -83,6 +83,10 @@ $profile = auth()->user()->user_cover ? auth()->user()->user_cover : $img;
             window.livewire.on('alertSaved', () => {
                 notificationSwal('¡Publicación Guadada extisomente!', 'rgba(47,122,67,0.89)');
             });
+
+            window.livewire.on('errorException', () => {
+                notificationSwal('¡Algo salió mal!', 'rgba(248,54,69,0.89)');
+            });
         });
     </script>
 @endpush

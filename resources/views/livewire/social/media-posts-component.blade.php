@@ -14,7 +14,7 @@
                             <a href="javascript:;" class="ml-3 text-danger font-16" data-toggle="tooltip"
                                data-html="true" data-placement="bottom" data-custom-class="tooltip-primary"
                                title="
-                                   <b>Copiar la URL de un video YouTube<hr class='mt-1 mb-1 bg-light'>
+                                   <b>Copiar la URL de un video YouTube</b><hr class='mt-1 mb-1 bg-light'>
                                    <img src=&quot;{{ asset('assets/images/service/help-youtube.png') }}&quot; class='img-fluid'>
                                    <hr class='mt-1 mb-1 bg-light'>Pegar la URL en Crear Post
                                 ">
@@ -24,13 +24,27 @@
                             <a href="javascript:;" class="text-danger font-16" data-toggle="tooltip"
                                data-html="true" data-placement="bottom" data-custom-class="tooltip-primary"
                                title="
-                                   <b>Copiar la URL de un Documento PDF Google Drive<hr class='mt-1 mb-1 bg-light'>
+                                   <b>Copiar la URL de un Documento PDF Google Drive</b><hr class='mt-1 mb-1 bg-light'>
                                    <img src=&quot;{{ asset('assets/images/service/help-1-gdrive.png') }}&quot; class='img-fluid'>
                                    <hr class='mt-1 mb-1 bg-light'>
                                    <img src=&quot;{{ asset('assets/images/service/help-2-gdrive.png') }}&quot; class='img-fluid'>
                                    <hr class='mt-1 mb-1 bg-light'>Pegar la URL en Crear Post
                                 ">
                                 <i class="simple-icon-info text-gdrive"></i>
+                            </a>
+
+                            <a href="javascript:;" class="text-danger font-16" data-toggle="tooltip"
+                               data-html="true" data-placement="bottom" data-custom-class="tooltip-primary"
+                               title="
+                                   <b>Para utilizar los emojis</b><hr class='mt-1 mb-1 bg-light'>
+                                   <img src=&quot;{{ asset('assets/images/service/help-1-emoji.png') }}&quot; class='img-fluid'>
+                                   <hr class='mt-1 mb-1 bg-light'> Clic en el emoji deseado <br>
+                                   No borrar el código generado del area de texto
+                                   <hr class='mt-1 mb-1 bg-light'>
+                                   <img src=&quot;{{ asset('assets/images/service/help-2-emoji.png') }}&quot; class='img-fluid'>
+                                   <hr class='mt-1 mb-1 bg-light'>
+                                ">
+                                <i class="simple-icon-info text-warning"></i>
                             </a>
 
                         </h4>
