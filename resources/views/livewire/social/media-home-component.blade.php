@@ -54,19 +54,20 @@ $profile = auth()->user()->user_cover ? auth()->user()->user_cover : $img;
             });
 
             window.livewire.on('closeModalPostShared', () => {
-                $('#post-modal-shared').modal('hide');
+                $('.post-modal-shared').modal('hide');
                 notificationSwal('¡Compartido extisomente!', 'rgba(47,122,67,0.89)');
             });
 
             window.livewire.on('refreshContent', () => {
                 lightbox('.baguetteBoxThree');
-                const players = {};
 
+                const players = {};
                 Array.from(document.querySelectorAll('.player')).forEach(video => {
                     players[video.id] = new Plyr(video, {});
                 });
             });
             lightbox('.baguetteBoxThree');
+
             const players = {};
 
             Array.from(document.querySelectorAll('.player')).forEach(video => {

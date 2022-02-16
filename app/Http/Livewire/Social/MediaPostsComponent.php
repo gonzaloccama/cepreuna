@@ -175,91 +175,109 @@ class MediaPostsComponent extends Component
         $this->validate($this->rules, [], $this->attributes);
 
         $postID = null;
+        $is_file = false;
+        $postTYPE = '';
+        try {
+            if ($this->text || $this->photo_source || $this->video_source || $this->file_source) {
 
-        if ($this->text || $this->photo_source || $this->video_source || $this->file_source) {
+                $post = new MediaPost();
 
-            $post = new MediaPost();
+                $post->user_id = auth()->user()->id;
+                $post->user_type = 'user';
+                $post->in_group = '0';
+                $post->group_id = 0;
+                $post->group_approved = '1';
+                $post->in_event = '0';
+                $post->event_id = 0;
+                $post->event_approved = '0';
+                $post->post_type = $postTYPE = $this->post_type;
+                $post->origin_id = 0;
+                $post->privacy = $this->privacy;
+                $post->text = $this->text;
 
-            $post->user_id = auth()->user()->id;
-            $post->user_type = 'user';
-            $post->in_group = '0';
-            $post->group_id = 0;
-            $post->group_approved = '1';
-            $post->in_event = '0';
-            $post->event_id = 0;
-            $post->event_approved = '0';
-            $post->post_type = $this->post_type;
-            $post->origin_id = 0;
-            $post->privacy = $this->privacy;
-            $post->text = $this->text;
+                if ($post->save()) {
+                    $this->emit('closeModalPost');
 
-            if ($post->save()) {
-                $postID = $post->id;
-                $this->emit('closeModalPost');
-                if (!$this->photo_source && !$this->video_source && !$this->file_source) {
-                    $this->cleanItems();
+                    $this->postId = $postID = $post->id;
+                    $this->postTypeDel = $postTYPE;
+
+                    if (!$this->photo_source && !$this->video_source && !$this->file_source) {
+                        $is_file = true;
+                        $this->cleanItems();
+                    }
                 }
-            }
-            /*** Begin Upload Image/Photo ***/
-            if ($this->photo_source) {
-                // create an image manager instance with favored driver
+                /*** Begin Upload Image/Photo ***/
+                if ($this->photo_source) {
+                    // create an image manager instance with favored driver
 
-                $photoSourceName = Carbon::now()->timestamp . '.' . $this->photo_source->extension();
-                $photo_resize = Image::make($this->photo_source->getRealPath());
-                $photo_resize->resize(720, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $photo_resize->save('assets/uploads/users/posts-photos/' . $photoSourceName);
+                    $photoSourceName = Carbon::now()->timestamp . '.' . $this->photo_source->extension();
+                    $photo_resize = Image::make($this->photo_source->getRealPath());
+                    $photo_resize->resize(720, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $photo_resize->save('assets/uploads/users/posts-photos/' . $photoSourceName);
 //                $this->photo_source->storeAs('uploads/users/posts-photos', $photoSourceName);
 
-                $postPhoto = new MediaPostsPhoto();
+                    $postPhoto = new MediaPostsPhoto();
 
-                $postPhoto->post_id = $postID;
-                $postPhoto->album_id = 0;
-                $postPhoto->source = $photoSourceName;
+                    $postPhoto->post_id = $postID;
+                    $postPhoto->album_id = 0;
+                    $postPhoto->source = $photoSourceName;
 
-                if ($postPhoto->save()) {
-                    $this->cleanItems();
+                    if ($postPhoto->save()) {
+                        $is_file = true;
+                        $this->cleanItems();
+                    }
                 }
-            }
-            /*** End Upload Image/Photo ***/
+                /*** End Upload Image/Photo ***/
 
-            /*** Begin Upload Video ***/
-            if ($this->video_source) {
-                $videoSourceName = Carbon::now()->timestamp . '.' . $this->video_source->extension();
-                $this->video_source->storeAs('uploads/users/posts-videos', $videoSourceName);
+                /*** Begin Upload Video ***/
+                if ($this->video_source) {
+                    $videoSourceName = Carbon::now()->timestamp . '.' . $this->video_source->extension();
+                    $this->video_source->storeAs('uploads/users/posts-videos', $videoSourceName);
 
-                $postVideo = new MediaPostsVideo();
+                    $postVideo = new MediaPostsVideo();
 
-                $postVideo->post_id = $postID;
-                $postVideo->thumbnail = '';
-                $postVideo->source = $videoSourceName;
+                    $postVideo->post_id = $postID;
+                    $postVideo->thumbnail = '';
+                    $postVideo->source = $videoSourceName;
 
-                if ($postVideo->save()) {
-                    $this->cleanItems();
+                    if ($postVideo->save()) {
+                        $is_file = true;
+                        $this->cleanItems();
+                    }
                 }
-            }
-            /*** End Upload Video ***/
+                /*** End Upload Video ***/
 
-            /*** Begin Upload Video ***/
-            if ($this->file_source) {
+                /*** Begin Upload Video ***/
+                if ($this->file_source) {
 
-                $str = substr($this->file_source->getClientOriginalName(), 0, strlen($this->file_source->getClientOriginalName()) - 4);
-                $str .= ' ' . Carbon::now()->toDateString();
-                $fileSourceName = $str . '.' . $this->file_source->extension();
-                $this->file_source->storeAs('uploads/users/posts-files', $fileSourceName);
+                    $str = substr($this->file_source->getClientOriginalName(), 0, strlen($this->file_source->getClientOriginalName()) - 4);
+                    $str .= ' ' . Carbon::now()->toDateString();
+                    $fileSourceName = $str . '.' . $this->file_source->extension();
+                    $this->file_source->storeAs('uploads/users/posts-files', $fileSourceName);
 
-                $postFile = new MediaPostsFile();
+                    $postFile = new MediaPostsFile();
 
-                $postFile->post_id = $postID;
+                    $postFile->post_id = $postID;
 //                $postFile->thumbnail = '';
-                $postFile->source = $fileSourceName;
+                    $postFile->source = $fileSourceName;
 
-                if ($postFile->save()) {
-                    $this->cleanItems();
+                    if ($postFile->save()) {
+                        $is_file = true;
+                        $this->cleanItems();
+                    }
                 }
+                /*** End Upload Video ***/
+
+                if (!$is_file) {
+                    $is_file = false;
+                    $this->cleanItems();
+                    $this->deletePost();
+                }
+                $this->cleanItemsDel();
             }
-            /*** End Upload Video ***/
+        } catch (Exception $e) {
         }
     }
 

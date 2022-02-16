@@ -57,7 +57,7 @@
 
                 <?php
                 $dt = [
-                    'name' => 'image',
+                    'name' => 'newImage',
                     'text' => 'Imagen',
                     'required' => 1,
                     'required_mssg' => '256x256',

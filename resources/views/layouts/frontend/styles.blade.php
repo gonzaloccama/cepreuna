@@ -348,4 +348,8 @@
         background-color: #00365a;
     }
 
+    .font-13{
+        font-size: 13px;
+    }
+
 </style>

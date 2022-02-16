@@ -244,6 +244,14 @@
         font-size: 18px;
     }
 
+    .font-10 {
+        font-size: 10px;
+    }
+
+    .font-12 {
+        font-size: 12px;
+    }
+
     /*** select2 ***/
     /*.form-control {*/
     /*    border:1px solid rgba(71, 71, 71, 0.32) !important;*/
@@ -565,7 +573,7 @@
     }
 
     /*** emojis ***/
-    .media-emoji img{
+    .media-emoji img {
         padding: 5px;
         border: 1px dashed rgba(59, 63, 92, 0.15);
         margin-top: 1px;
@@ -574,5 +582,25 @@
 
     .media-emoji img:hover {
         background-color: rgba(59, 63, 92, 0.12);
+    }
+
+    .tooltip-inner {
+        max-width: 40em;
+    }
+
+    .tooltip.bs-tooltip-bottom .arrow:before {
+        border-bottom-color: var(--iq-primary) !important;
+    }
+
+    .text-youtube {
+        color: #FF0000 !important;
+    }
+
+    .text-gdrive {
+        color: #0063D3 !important;
+    }
+
+    .bg-gdrive {
+        background-color: #0063D3 !important;
     }
 </style>

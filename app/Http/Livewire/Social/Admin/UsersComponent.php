@@ -21,7 +21,7 @@ class UsersComponent extends BaseComponent
     public $username;
     public $email;
     public $phone;
-    public $password;
+//    public $password;
     public $role;
     public $user_started;
     public $user_activated;
@@ -51,6 +51,8 @@ class UsersComponent extends BaseComponent
 
     public $findURL;
     public $tab;
+
+    public $showOnce;
 
     public $headers = [
         'user_dni' => 'DNI',
@@ -176,7 +178,7 @@ class UsersComponent extends BaseComponent
         $data->username = $this->username;
         $data->email = $this->email;
         $data->phone = $this->phone;
-        $data->password = Hash::make($this->password = Str::random(8));
+        $data->password = Hash::make($this->user_dni/*Str::random(8)*/);
         $data->role = $this->role;
         $data->user_started = $this->user_started ? '1' : '0';
         $data->user_activated = $this->user_activated ? '1' : '0';
@@ -194,7 +196,7 @@ class UsersComponent extends BaseComponent
         $data->user_biography = $this->user_biography;
         $data->user_cover = $this->user_cover ? $imageName : null;
 
-        $this->findURL = $this->password;
+//        $this->findURL = $this->password;
 
         if ($data->save()) {
             $this->emit('alertAdd');

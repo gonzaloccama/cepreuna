@@ -1,19 +1,19 @@
-<div id="post-modal-data">
+<div class="post-modal-data{{ __('-shared') }}">
     <div class="share-block d-flex align-items-center feather-icon mr-3">
-        <a href="javascript:;" data-toggle="modal" data-target="#post-modal-shared"
+        <a href="javascript:;" data-toggle="modal" data-target=".post-modal-shared"
            wire:click.prevent="postShared({{ $post->origin_id?$post->origin_id:$post->id }})">
             <i class="ri-share-line"></i>
             <?php
-                $share_count = \App\Models\MediaPost::where('origin_id', $post->id)->get()->count();
+            $share_count = \App\Models\MediaPost::where('origin_id', $post->id)->get()->count();
             ?>
             <span class="ml-1">{{ $share_count }} Share</span>
         </a>
     </div>
 
-    <div class="modal fade" id="post-modal-shared" wire:ignore.self tabindex="-1" role="dialog"
+    <div class="modal fade post-modal-shared" wire:ignore.self tabindex="-1" role="dialog"
          aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
 
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="post-modalLabel">Compartir Post</h5>

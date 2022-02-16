@@ -8,8 +8,34 @@
         <div class="col-sm-12">
             <div id="post-modal-data" class="iq-card iq-card-block iq-card-stretch shadow">
                 <div class="iq-card-header d-flex justify-content-between">
-                    <div class="iq-header-title">
-                        <h4 class="card-title font-rajdhani uppercase weight-500">Crear post</h4>
+                    <div class="iq-header-title" wire:ignore>
+                        <h4 class="card-title font-rajdhani uppercase weight-500">Crear post
+
+                            <a href="javascript:;" class="ml-3 text-danger font-16" data-toggle="tooltip"
+                               data-html="true" data-placement="bottom" data-custom-class="tooltip-primary"
+                               title="
+                                   <b>Copiar la URL de un video YouTube<hr class='mt-1 mb-1 bg-light'>
+                                   <img src=&quot;{{ asset('assets/images/service/help-youtube.png') }}&quot; class='img-fluid'>
+                                   <hr class='mt-1 mb-1 bg-light'>Pegar la URL en Crear Post
+                                ">
+                                <i class="simple-icon-info text-youtube"></i>
+                            </a>
+
+                            <a href="javascript:;" class="text-danger font-16" data-toggle="tooltip"
+                               data-html="true" data-placement="bottom" data-custom-class="tooltip-primary"
+                               title="
+                                   <b>Copiar la URL de un Documento PDF Google Drive<hr class='mt-1 mb-1 bg-light'>
+                                   <img src=&quot;{{ asset('assets/images/service/help-1-gdrive.png') }}&quot; class='img-fluid'>
+                                   <hr class='mt-1 mb-1 bg-light'>
+                                   <img src=&quot;{{ asset('assets/images/service/help-2-gdrive.png') }}&quot; class='img-fluid'>
+                                   <hr class='mt-1 mb-1 bg-light'>Pegar la URL en Crear Post
+                                ">
+                                <i class="simple-icon-info text-gdrive"></i>
+                            </a>
+
+                        </h4>
+
+
                     </div>
                 </div>
                 <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
@@ -29,6 +55,8 @@
             </div>
         </div>
     @endif
+
+
 
     @foreach($posts as $post)
         <?php
@@ -217,7 +245,8 @@
                                                         {{ $comment->user->fullname }}
                                                     </a>
                                                 </h6>
-                                                <p class="mb-0" ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
+                                                <p class="mb-0" ondragstart="return false" onselectstart="return false"
+                                                   oncontextmenu="return false">
                                                     @include('livewire.widgets.icon-regex.pattern-comment-emojis', ['content' => $comment->text, 'w' => 30])
                                                 </p>
                                                 {{--                                                <p class="mb-0">{{ $comment->text }}</p>--}}
@@ -225,7 +254,7 @@
                                             <div style="font-size: 12px; font-weight: 600;"
                                                  class="d-flex flex-wrap align-items-center comment-activity ml-2 pt-1 pb-1">
                                                 @include('livewire.social.media-home-component.posts-comments-reactions')
-                                                <a href="javascript:;">respuesta</a>
+                                                {{--                                                <a href="javascript:;">respuesta</a>--}}
                                                 @if($comment->user_id == auth()->user()->id)
                                                     <a href="#"
                                                        wire:click.prevent="deletePostsComment({{ $comment->id }})">
@@ -316,3 +345,5 @@
         @endif
     @endif
 </div>
+
+

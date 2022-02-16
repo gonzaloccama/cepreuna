@@ -53,7 +53,7 @@
                                 <input hidden type="file" id="upload" wire:model="photo_source"
                                        accept="image/jpeg, image/png">
                                 <label
-                                    class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3"
+                                    class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3 weight-500"
                                     for="upload">
                                     <img src="{{ asset('assets/images/icon/photo.png') }}"
                                          alt="icon" class="img-fluid"> Cargar foto
@@ -64,18 +64,18 @@
                             <li class="col-md-6 mb-3 text-center upload">
                                 {{--                            <input hidden type="file" id="album" wire:model=""--}}
                                 {{--                                   accept="image/jpeg, image/png" multiple="multiple">--}}
-                                <label class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3"
+                                <label class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3  weight-500"
                                        for="album">
-                                    <img
-                                        src="{{ asset('assets/images/icon/album-photo.png') }}"
-                                        alt="icon" class="img-fluid"> Crear album
+                                    <img src="{{ asset('assets/images/icon/album-photo.png') }}"
+                                         alt="icon" class="img-fluid"> Crear album
+                                    <span class="text-danger font-12">(No posteable)</span>
                                 </label>
                             </li>
 
                             <li class="col-md-6 mb-3 text-center upload">
                                 <input hidden type="file" id="video" wire:model="video_source"
                                        accept="video/mp4">
-                                <label class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3"
+                                <label class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3 weight-500"
                                        for="video">
                                     <img src="{{ asset('assets/images/icon/video.png') }}"
                                          alt="icon" class="img-fluid"> Cargar video
@@ -85,7 +85,7 @@
                             <li class="col-md-6 mb-3 text-center upload">
                                 <input hidden type="file" id="pdf" wire:model="file_source"
                                        accept="application/pdf">
-                                <label class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3" for="pdf">
+                                <label class="iq-bg-primary text-left col-md-12 p-2 pointer mr-3  weight-500" for="pdf">
                                     <img src="{{ asset('assets/images/icon/file.png') }}"
                                          alt="icon" class="img-fluid"> Cargar PDF
                                 </label>
@@ -135,7 +135,7 @@
                             {{--                        <img src="{{ $video_source->temporaryUrl() }}"--}}
                             {{--                             class="img-fluid rounded w-100 shadow-sm"--}}
                             {{--                             alt="" width="120">--}}
-                            <video controls class="img-fluid w-100 shadow-sm player" playsinline>
+                            <video controls class="img-fluid w-100 shadow-sm" playsinline>
                                 <source src="{{ $video_source->temporaryUrl() }}" type="video/mp4">
                                 Your browser does not support HTML video.
                             </video>
@@ -149,7 +149,7 @@
                                     wire:click.prevent="deleteFilePost">
                                 <span aria-hidden="true"><i class="simple-icon-close"></i></span>
                             </button>
-                            <img src="{{ asset('assets/images/icon/pdf-page.png') }}"
+                            <img src="{{ asset('assets/images/icon/pdf-page.svg') }}"
                                  class="img-fluid shadow-sm"
                                  alt="" width="60">
                             <span>{{ substr($file_source->getClientOriginalName(), 0, strlen($file_source->getClientOriginalName())-4).'.'.$file_source->extension() }}</span>

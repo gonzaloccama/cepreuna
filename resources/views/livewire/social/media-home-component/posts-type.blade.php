@@ -84,7 +84,7 @@
             $post_video = \App\Models\MediaPostsVideo::where('post_id', $data->id)->first();
         @endphp
         <div class="col-md-12 mb-3 text-center">
-            <video class="video-container img-fluid w-100 shadow-sm player" playsinline controls>
+            <video class="video-container img-fluid w-100 shadow-sm" playsinline controls>
                 <source src="{{ asset('assets/uploads/users/posts-videos/').'/'.$post_video->source }}"
                         type="video/mp4">
                 Your browser does not support HTML video.
@@ -104,7 +104,7 @@
         </div>
     @endif
 @elseif($idUrl != '' && $findUrl)
-    <div class="col-md-12 mb-3 text-center" wire:ignore.self>
+    <div class="col-md-12 mb-3 text-center">
         <div class="video-container img-fluid shadow-sm">
             <iframe src="https://www.youtube.com/embed/{{ $idUrl[0] }}" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

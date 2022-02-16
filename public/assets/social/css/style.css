@@ -1842,6 +1842,16 @@ div#post-modal-data .modal .modal-dialog {
     margin: 0;
 }
 
+div.post-modal-data-shared .modal {
+    position: absolute;
+    height: auto;
+}
+
+div.post-modal-data-shared .modal .modal-dialog {
+    max-width: 100%;
+    margin: 0;
+}
+
 .modal-open {
     overflow: scroll;
 }

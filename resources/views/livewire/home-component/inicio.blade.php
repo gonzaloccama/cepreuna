@@ -27,20 +27,30 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="user-content">
-                                        <h5 class="user-name text-primary mb-0">Inicio del CEPRE - UNAP</h5>
+                                        <h5 class="user-name text-primary mb-0">Inicio del CEPREUNA</h5>
                                         <span
                                             class="user-occupation">Inicio de clases {{ $this->dateSpanish($banner->start_class) }}</span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="user-content mt-3">
-                                        <div class="button-wrap">
-                                            <a class="btn btn-custom btn-primary btn-white-hover"
-                                               href="{{ $banner->go_link }}" target="_blank">Inscribirme</a>
+
+                                @if(Carbon\Carbon::now() <= $banner->finish_register)
+                                    <div class="col-md-4">
+                                        <div class="user-content mt-3">
+                                            <div class="button-wrap">
+                                                <a class="btn btn-custom btn-primary btn-white-hover"
+                                                   href="{{ $banner->go_link }}" target="_blank">Inscribirme</a>
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
+                                @else
+                                    <div class="col-md-4">
+                                        <div class="user-content">
+                                            <h5 class="user-name text-primary mb-0">Culminación del CEPREUNA</h5>
+                                            <span
+                                                class="user-occupation">Finalización {{ $this->dateSpanish($banner->finish_class) }}</span>
+                                        </div>
+                                    </div>
+                                @endif
 
                             </div>
                         </div>
