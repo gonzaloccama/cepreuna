@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form class="parsley-examples">
 
     <?php
@@ -95,3 +96,6 @@
         </div>
     </div>
 </form>
+=======
+<?php
+>>>>>>> 80f4e059c31226e5f54dea7ad0d92a3819ede761
