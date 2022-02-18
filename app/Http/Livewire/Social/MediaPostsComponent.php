@@ -279,6 +279,9 @@ class MediaPostsComponent extends Component
             }
         } catch (Exception $e) {
             $this->emit('errorException');
+            $this->cleanItems();
+            $this->deletePost();
+            $this->cleanItemsDel();
         }
     }
 

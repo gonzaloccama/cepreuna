@@ -40,36 +40,15 @@
                                 <a href="javascript:;">Presidente<span
                                         class="text-secondary">: {{ $settings->executive->names }}</span></a>
                             </li>
-                            {{--
-                                                        <li class="search-wrap hassub d-block d-lg-none">
-                                                            <a href="#" class="search-btn">
-                                                                <i class="fa fa-search"></i>
-                                                            </a>
-                                                            <ul class="hassub-body search-body">
-                                                                <li>
-                                                                    <form class="search-form" action="#">
-                                                                        <div class="form-field">
-                                                                            <input class="input-field" type="search" placeholder="Buscar...">
-                                                                        </div>
-                                                                        <div class="form-btn_wrap">
-                                                                            <button type="submit" value="submit" id="submit"
-                                                                                    class="btn btn-secondary btn-primary-hover rounded-0"
-                                                                                    name="submit">
-                                                                                <i class="fa fa-search"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                            --}}
                             <li class="search-wrap hassub d-block d-lg-none" style="display: flex">
                                 @if (Route::has('login'))
 
                                     <div class="dropdown">
                                         <a type="text" id="dropdownMenuButton" data-toggle="dropdown"
-                                           aria-haspopup="true" aria-expanded="false">
-                                            <i class="simple-icon-user text-secondary"></i> <b class="font-13 align-middle">Login</b>
+                                           aria-haspopup="true" aria-expanded="false" class="font-rajdhani p-1 pb-0 m-0"
+                                           style="border: 1px dashed #00365A !important;">
+                                            <i class="simple-icon-user text-secondary"></i> <b
+                                                class="font-13 align-middle">Login</b>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right p-1"
                                              aria-labelledby="dropdownMenuButton">

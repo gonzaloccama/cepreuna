@@ -47,7 +47,7 @@
                 $dt = [
                     'name' => 'facebook',
                     'text' => 'Facebook',
-                    'required' => 1,
+                    'required' => 0,
                     'type' => 'text-h',
                 ];
                 ?>
@@ -57,7 +57,7 @@
                 $dt = [
                     'name' => 'twitter',
                     'text' => 'Twitter',
-                    'required' => 1,
+                    'required' => 0,
                     'type' => 'text-h',
                 ];
                 ?>
@@ -67,7 +67,7 @@
                 $dt = [
                     'name' => 'whatsapp',
                     'text' => 'WhatsApp',
-                    'required' => 1,
+                    'required' => 0,
                     'type' => 'text-h',
                 ];
                 ?>
@@ -77,7 +77,7 @@
                 $dt = [
                     'name' => 'biography',
                     'text' => 'Biografía',
-                    'required' => 1,
+                    'required' => 0,
                     'type' => 1,
                 ];
                 ?>

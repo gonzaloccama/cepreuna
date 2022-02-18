@@ -352,4 +352,9 @@
         font-size: 13px;
     }
 
+    .font-rajdhani-16{
+        font-family: "Rajdhani", sans-serif !important;
+        font-size: 16px;
+    }
+
 </style>

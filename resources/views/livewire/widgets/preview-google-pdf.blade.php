@@ -12,7 +12,7 @@
         }
     }
 @endphp
-@if($findURL[0])
+@if(isset($findURL[0]) && !empty($findURL[0]))
     @if(str_contains($findURL[0], 'https://drive.google.com/file/d/') && $getIdDrive[0])
         @if(!$heading)
             <div class="text-muted mt-0 pt-0 pb-1 pl-1 font-italic">Vista previa del documento en drive</div>

@@ -224,6 +224,8 @@
         font-weight: 600;
     }
 
+
+
     .font-rajdhani-11 {
         font-family: "Rajdhani", sans-serif !important;
         font-size: 11px !important;

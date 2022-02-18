@@ -25,6 +25,7 @@ class SystemSettingComponent extends Component
     public $website_mission;
     public $website_vision;
     public $website_objectives;
+    public $website_values;
     public $website_history;
     public $updated_at;
 
@@ -54,7 +55,9 @@ class SystemSettingComponent extends Component
         'website_facebook_page' => '<b><ins>URL de la página Facebook</ins></b>',
         'website_mission' => '<b><ins>Misión</ins></b>',
         'website_vision' => '<b><ins>Visión</ins></b>',
-        'website_objectives' => '<b><ins>Objetivos</ins></b>',
+        'website_objectives' => '<b><ins>Objetivo General</ins></b>',
+        'website_values.0' => '<b><ins>Objetivo Específico</ins></b>',
+        'website_values.*' => '<b><ins>Objetivo Específico</ins></b>',
         'website_history' => '<b><ins>Historia</ins></b>',
         'website_logo_1st' => '<b><ins>Logo</ins></b>',
         'website_logo_2sd' => '<b><ins>Logo blanco</ins></b>',
@@ -92,9 +95,16 @@ class SystemSettingComponent extends Component
         'website_facebook_page' => 'nullable|url',
     ];
 
-    protected $rules = [
-        'website_objectives' => 'nullable|min:126',
-        'website_history' => 'required|min:126',
+//    protected $rules = [
+//        'website_objectives' => 'nullable|min:126',
+//        'website_history' => 'required|min:126',
+//    ];
+
+    protected $others = [
+        'website_objectives' => 'required|min:64',
+        'website_values.0' => 'nullable|min:64',
+        'website_values.*' => 'nullable|min:64',
+        'website_history' => 'required|min:64',
     ];
 
     public function mount()
@@ -248,6 +258,35 @@ class SystemSettingComponent extends Component
         }
     }
 
+    public function others($toSave = 0)
+    {
+        $data = SystemSetting::find(1);
+        if (!$toSave) {
+
+            $this->website_values = json_decode($data->website_values);
+            $this->website_objectives = $data->website_objectives;
+            $this->website_history = $data->website_history;
+
+            $this->edit_logo_1st = $data->website_logo_1st;
+            $this->updated_at = $data->updated_at;
+
+            $this->title = 'Otros';
+            $this->frame = 'others';
+        } else {
+            $this->validate($this->others, [], $this->attributes);
+
+            $data->website_values = $this->website_values;
+            $data->website_objectives = $this->website_objectives;
+            $data->website_history = $this->website_history;
+
+//            dd($data);
+            if ($data->save()) {
+                $this->frame = 'index';
+                $this->emit('alertUpdate');
+            }
+        }
+    }
+
     public function closeFrame()
     {
         $this->cleanItems();
@@ -267,6 +306,7 @@ class SystemSettingComponent extends Component
         $this->website_mission = null;
         $this->website_vision = null;
         $this->website_objectives = null;
+        $this->website_values = null;
         $this->website_history = null;
         $this->updated_at = null;
         $this->website_logo_1st = null;

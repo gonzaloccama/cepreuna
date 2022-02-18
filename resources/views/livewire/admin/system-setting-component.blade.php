@@ -28,6 +28,10 @@
                     <a href="javascript:;" wire:click.prevent="missionAndVision"
                        class="list-group-item rounded-0 mb-1 {{ $frame == 'mission-and-vision'?'active-left':'' }}">
                         <i class="mdi mdi-ballot-outline font-18 align-middle mr-2"></i>Misión y Visión</a>
+
+                    <a href="javascript:;" wire:click.prevent="others"
+                       class="list-group-item rounded-0 mb-1 {{ $frame == 'others'?'active-left':'' }}">
+                        <i class="mdi mdi-ballot-outline font-18 align-middle mr-2"></i>Otros</a>
                 </div>
             </div>
         </div>

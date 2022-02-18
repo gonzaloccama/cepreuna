@@ -35,8 +35,8 @@ class MediaPostComponent extends BaseComponent
         $findIn = [];
         $table = 'media_posts';
 
-        foreach ($_pre as $item){
-            $findIn[] = $table.'.'.$item;
+        foreach ($_pre as $item) {
+            $findIn[] = $table . '.' . $item;
         }
 
         $data['results'] = MediaPost::orderBy($this->fieldSort, $this->sort)
@@ -46,8 +46,8 @@ class MediaPostComponent extends BaseComponent
                 }
                 $query->orWhere(DB::raw("CONCAT(users.user_firstname, ' ', users.user_lastname)"), 'LIKE', '%' . $this->keyWord . '%');
             })
-            ->select($table.".*")
-            ->join('users', 'users.id', '=', $table.".user_id")
+            ->select($table . ".*")
+            ->join('users', 'users.id', '=', $table . ".user_id")
             ->selectRaw('CONCAT(users.user_firstname," ",users.user_lastname) as fullname')
             ->paginate($this->limit);
 

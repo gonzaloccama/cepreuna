@@ -1,7 +1,4 @@
 <?php
-//    $menus = \App\Models\SystemMenu::select('*', DB::raw("(select count(*) from system_menus ms where ms.parent = system_menus.id) as child"))
-//        ->where('parent', '=', 0)->orderBy('order')
-//        ->get();
 
 $menus = \App\Models\SystemMenu::orderBy('order')->with('children', function ($query) {
     $query->orderBy('order');
@@ -77,9 +74,11 @@ $menus = \App\Models\SystemMenu::orderBy('order')->with('children', function ($q
                                 @if (Route::has('login'))
 
                                     <div class="dropdown">
+
                                         <a type="text" id="dropdownMenuButton" data-toggle="dropdown"
-                                           aria-haspopup="true" aria-expanded="false">
-                                            <i class="simple-icon-user text-white"></i>
+                                           aria-haspopup="true" aria-expanded="false" class="p-1 pb-0 m-0 align-middle"
+                                           style="border: 1px dashed #fff !important;">
+                                            <i class="simple-icon-user text-white"></i> <span class="font-rajdhani-16 pt-3 pointer-event">login</span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right p-1 mt-5" aria-labelledby="dropdownMenuButton">
                                             @auth

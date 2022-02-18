@@ -26,7 +26,7 @@
                                                      style="font-size: 16px; color: #00365A; font-style: italic;">
                                                     <a href=""
                                                        style="border: 1px dashed #00365A; padding-left: 3px; padding-right: 3px;"
-                                                       wire:click.prevent="details({{$document->id}}, 'detail-document')">
+                                                       wire:click.prevent="details({{$document->id}}, 'document')">
                                                         Ver documento</a>
                                                 </div>
                                             </div>
