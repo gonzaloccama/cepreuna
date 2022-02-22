@@ -22,9 +22,29 @@
 
     <?php
     $dt = [
+        'name' => 'website_media_social.0.youtube',
+        'text' => 'YouTube',
+        'required' => 0,
+        'type' => 'text-h',
+    ];
+    ?>
+    @include('livewire.widgets.form.input', $dt)
+
+    <?php
+    $dt = [
+        'name' => 'website_media_social.0.instagram',
+        'text' => 'Instagram',
+        'required' => 0,
+        'type' => 'text-h',
+    ];
+    ?>
+    @include('livewire.widgets.form.input', $dt)
+
+    <?php
+    $dt = [
         'name' => 'website_media_social.0.twitter',
         'text' => 'Twitter',
-        'required' => 1,
+        'required' => 0,
         'type' => 'text-h',
     ];
     ?>
@@ -34,7 +54,7 @@
     $dt = [
         'name' => 'website_media_social.0.linkedin',
         'text' => 'Linkedin',
-        'required' => 1,
+        'required' => 0,
         'type' => 'text-h',
     ];
     ?>
@@ -44,7 +64,7 @@
     $dt = [
         'name' => 'website_media_social.0.whatsapp',
         'text' => 'WhatsApp',
-        'required' => 1,
+        'required' => 0,
         'type' => 'text-h',
     ];
     ?>

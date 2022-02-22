@@ -42,10 +42,10 @@ class FaqComponent extends BaseComponent
     ];
 
     protected $rules = [
-        'faq_question' => 'required|max:120',
+        'faq_question' => 'required|max:220',
         'faq_section_faq' => 'required',
-        'faq_answers.0' => 'required|max:420',
-        'faq_answers.*' => 'nullable|max:420',
+        'faq_answers.0' => 'required|max:720',
+        'faq_answers.*' => 'nullable|max:720',
         'faq_views' => 'nullable',
         'status' => 'nullable',
     ];

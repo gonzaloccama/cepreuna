@@ -49,6 +49,8 @@ class SystemSettingComponent extends Component
         'website_addresses.0' => '<b><ins>Dirección</ins></b>',
         'website_addresses.*' => '<b><ins>Dirección</ins></b>',
         'website_media_social.0.facebook' => '<b><ins>Facebook</ins></b>',
+        'website_media_social.0.youtube' => '<b><ins>YouTube</ins></b>',
+        'website_media_social.0.instagram' => '<b><ins>Instagram</ins></b>',
         'website_media_social.0.twitter' => '<b><ins>Twitter</ins></b>',
         'website_media_social.0.linkedin' => '<b><ins>Linkedin</ins></b>',
         'website_media_social.0.whatsapp' => '<b><ins>WhatsApp</ins></b>',
@@ -77,9 +79,9 @@ class SystemSettingComponent extends Component
     ];
 
     public $logo = [
-        'website_logo_1st' => 'nullable|mimes:png|max:100',
-        'website_logo_2sd' => 'nullable|mimes:png|max:100',
-        'website_favicon' => 'nullable|mimes:png|max:100',
+        'website_logo_1st' => 'nullable|mimes:png|max:124',
+        'website_logo_2sd' => 'nullable|mimes:png|max:124',
+        'website_favicon' => 'nullable|mimes:png|max:124',
     ];
 
     public $mission_and_vision = [
@@ -89,6 +91,8 @@ class SystemSettingComponent extends Component
 
     public $medias = [
         'website_media_social.0.facebook' => 'required|url',
+        'website_media_social.0.youtube' => 'nullable|url',
+        'website_media_social.0.instagram' => 'nullable|url',
         'website_media_social.0.twitter' => 'nullable|url',
         'website_media_social.0.linkedin' => 'nullable|url',
         'website_media_social.0.whatsapp' => 'nullable|numeric|digits:9',

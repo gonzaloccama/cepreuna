@@ -70,7 +70,7 @@
                                                                style="font-size: 22px"></i>
                                                         </div>
                                                         <div class="list-text pt-1">
-                                                            <p class="font-size-20">{{ $answer }}</p>
+                                                            <p class="font-size-20">{!! $answer !!}</p>
                                                         </div>
                                                     </li>
                                                 @endforeach
