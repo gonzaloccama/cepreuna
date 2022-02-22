@@ -18628,12 +18628,12 @@ input[type="checkbox"]:checked + label:after {
 }
 
 .main-nav > ul > li:not(:last-child) {
-    padding-right: 20px;
+    padding-right: 15px;
 }
 
 @media (max-width: 1199px) {
     .main-nav > ul > li:not(:last-child) {
-        padding-right: 20px;
+        padding-right: 15px;
     }
 }
 

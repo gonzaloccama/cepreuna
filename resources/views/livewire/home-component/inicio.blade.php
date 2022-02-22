@@ -19,14 +19,14 @@
                                     </div>
                                     <hr>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 pt-sm-2">
                                         <div class="user-content">
                                             <h5 class="user-name text-primary mb-0">Inscripciones</h5>
                                             <span class="user-occupation">Inscripciones desde {{ $this->dateSpanish($banner->start_register) }}
                                         hasta {{ $this->dateSpanish($banner->finish_register) }}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 pt-sm-2">
                                         <div class="user-content">
                                             <h5 class="user-name text-primary mb-0">Inicio del CEPREUNA</h5>
                                             <span
@@ -35,7 +35,7 @@
                                     </div>
 
                                     @if(Carbon\Carbon::now() <= $banner->finish_register)
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 pt-sm-2">
                                             <div class="user-content mt-3">
                                                 <div class="button-wrap">
                                                     <a class="btn btn-custom btn-primary btn-white-hover"
@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
                                     @else
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 pt-sm-2">
                                             <div class="user-content">
                                                 <h5 class="user-name text-primary mb-0">Culminación del CEPREUNA</h5>
                                                 <span
@@ -105,16 +105,25 @@
 <!-- .... Area End Here -->
 
 <!-- Begin cycles Area -->
-<div class="project-area py-115" style="background-image: linear-gradient(rgba(0,54,90,0.78), rgb(0,54,90,0.78))">
+<div class="project-area py-55" style="background-image: linear-gradient(rgba(0,54,90,0.78), rgb(0,54,90,0.78))">
     <div class="container">
         <?php
         $cycles = \App\Models\CycleAcademy::orderBy('created_at', 'desc')->where('status', '1')->take(4)->get();
         ?>
         <div class="section-title-area pb-70">
-            <div class="section-title pb-5 pb-lg-0">
-                <h2 class="mb-0 font-size-50 text-white">Ciclos Recientes</h2>
+            <div class="section-title with-border pb-5 pb-lg-0">
+                <h2 class="mb-0 font-size-50 text-white">Ciclos <br> Recientes</h2>
+            </div>
+            <div class="section-banner text-white align-self-center p-7"
+                 style="background-image: url('{{ asset('assets/images/banner/inner-bg/1-1.png') }}'); background-size: cover;">
+                <h2 class="info mb-0">Ciclos recientemente creados.</h2>
             </div>
         </div>
+        {{--        <div class="section-title-area pb-70">--}}
+        {{--            <div class="section-title pb-5 pb-lg-0">--}}
+        {{--                <h2 class="mb-0 font-size-50 text-white">Ciclos Recientes</h2>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
         <div class="row">
             <div class="col-lg-12">
                 <div class="custom-arrow-holder position-relative">
@@ -261,16 +270,25 @@
 <!-- Testimonial Area End Here -->
 
 <!-- Begin Blog Area -->
-<div class="blog-area py-115" style="background-image: linear-gradient(rgba(236,236,236,0.37), rgba(233,233,233,0.46))">
+<div class="blog-area py-55" style="background-image: linear-gradient(rgba(212,210,210,0.37), rgba(200,199,199,0.46))">
     <?php
     $posts = \App\Models\Post::orderBy('created_at', 'desc')->take(4)->get();
     ?>
     <div class="container">
-        <div class="section-title-area pt-0 pb-70">
-            <div class="section-title pb-5 pb-lg-0">
-                <h2 class="mb-0 font-size-50">Ultimas noticias</h2>
+        <div class="section-title-area pb-70">
+            <div class="section-title with-border pb-5 pb-lg-0">
+                <h2 class="mb-0 font-size-50">Ultimas  <br> noticias</h2>
+            </div>
+            <div class="section-banner text-white align-self-center p-7"
+                 style="background-image: url('{{ asset('assets/images/banner/inner-bg/1-1.png') }}'); background-size: cover;">
+                <h2 class="info mb-0">Nuestras últimas noticias.</h2>
             </div>
         </div>
+{{--        <div class="section-title-area pt-0 pb-70">--}}
+{{--            <div class="section-title pb-5 pb-lg-0">--}}
+{{--                <h2 class="mb-0 font-size-50">Ultimas noticias</h2>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="row">
             <div class="col-lg-12">
                 <div class="swiper-container blog-slider-1">

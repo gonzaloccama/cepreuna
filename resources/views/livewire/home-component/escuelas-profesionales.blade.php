@@ -41,8 +41,8 @@
                             <ul class="list-item">
                                 @foreach($schools as $school)
                                     <li class="m-0 p-0">
-                                        <div class="list-icon">
-                                            <i class="fa fa-check"></i>
+                                        <div class="list-icon pt-1">
+                                            <i class="simple-icon-check" aria-hidden="true" style="font-size: 22px"></i>
                                         </div>
                                         <div class="list-text">
                                             <p class="font-size-20">{{ $school }}</p>

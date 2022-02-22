@@ -53,7 +53,6 @@
                                     <p class="mb-1">{{ $address }}</p>
                                 @endforeach
                                 <hr>
-                                {{--                                    <span class="text-primary">New York, USA</span>--}}
                                 @foreach(json_decode($settings->website_phones) as $phone)
                                     <p class="mb-1"><a href="tel:051363684">{{ $phone }}</a></p>
                                 @endforeach
@@ -71,32 +70,29 @@
             <div class="row">
                 <div class="col-md-6 col-sm-4">
                     <ul class="social-link">
-                        <li class="facebook">
-                            <a href="#" data-tippy="Facebook" data-tippy-inertia="true"
-                               data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                               data-tippy-theme="sharpborder">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="twitter">
-                            <a href="#" data-tippy="Twitter" data-tippy-inertia="true"
-                               data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                               data-tippy-theme="sharpborder">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="whatsapp">
-                            <a href="#" data-tippy="Whatsapp" data-tippy-inertia="true"
-                               data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                               data-tippy-theme="sharpborder">
-                                <i class="fa fa-whatsapp"></i>
-                            </a>
-                        </li>
+                        <?php
+                        $socials = json_decode($settings->website_media_social);
+                        ?>
+
+                        @if(filled($socials[0]))
+                            @foreach($socials[0] as $key => $social)
+                                @if(isset($social) && !empty($social))
+                                    <li class="{{ $key }}">
+                                        <a href="{{ $key == 'whatsapp' ? 'https://api.whatsapp.com/send?phone=' . $social : $social }}"
+                                           target="_blank" data-tippy="{{ ucfirst($key) }}" data-tippy-inertia="true"
+                                           data-tippy-arrow="true" data-tippy-animation="shift-away"
+                                           data-tippy-delay="50" data-tippy-theme="sharpborder">
+                                            <i class="fa fa-{{ $key }}"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="col-md-6 col-sm-8 align-self-center">
                     <?php
-                    use Illuminate\Support\Carbon;$dt = Carbon::now();
+                    use App\Models\SystemSetting;use Illuminate\Support\Carbon;$dt = Carbon::now();
                     ?>
                     <div class="copyright">
                         <span class="copyright-text">© {{ $dt->year }} {{ $settings->website_name }}</span>

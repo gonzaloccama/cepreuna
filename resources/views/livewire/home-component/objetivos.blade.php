@@ -18,8 +18,8 @@
                         @if(isset($others->website_objectives) && !empty($others->website_objectives))
                             <ul class="list-item">
                                 <li>
-                                    <div class="list-icon">
-                                        <i class="fa fa-check"></i>
+                                    <div class="list-icon pt-1">
+                                        <i class="simple-icon-check" aria-hidden="true" style="font-size: 22px"></i>
                                     </div>
                                     <div class="list-text">
                                         <p class="font-size-20">{{ $others->website_objectives }}</p>
@@ -50,9 +50,9 @@
                         <div class="about-content pl-0">
                             <ul class="list-item">
                                 @foreach(json_decode($others->website_values) as $objEs)
-                                    <li>
-                                        <div class="list-icon">
-                                            <i class="fa fa-check"></i>
+                                    <li class="p-0 m-0">
+                                        <div class="list-icon pt-1">
+                                            <i class="simple-icon-check" aria-hidden="true" style="font-size: 22px"></i>
                                         </div>
                                         <div class="list-text">
                                             <p class="font-size-20">

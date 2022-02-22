@@ -45,10 +45,8 @@
 
                                     <div class="dropdown">
                                         <a type="text" id="dropdownMenuButton" data-toggle="dropdown"
-                                           aria-haspopup="true" aria-expanded="false" class="font-rajdhani p-1 pb-0 m-0"
-                                           style="border: 1px dashed #00365A !important;">
-                                            <i class="simple-icon-user text-secondary"></i> <b
-                                                class="font-13 align-middle">Login</b>
+                                           aria-haspopup="true" aria-expanded="false" class="font-rajdhani p-1 pb-0 m-0 btn btn-login-responsive">
+                                            <i class="simple-icon-user text-secondary"></i> Login
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right p-1"
                                              aria-labelledby="dropdownMenuButton">

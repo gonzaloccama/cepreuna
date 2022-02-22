@@ -2,10 +2,10 @@
     $pattern_url = '~[a-z]+://\S+~';
 
     $pattern_id = '#(?<=v=|v\/|vi=|vi\/|youtu.be\/)[a-zA-Z0-9_-]{11}#';
-    $idUrl = '';
+    $idUrl;
 
     $file_pattern_id = '/(file\/d\/)(.*)(\/)/';
-    $idFileUrl = '';
+    $idFileUrl;
     $text = $data->text;
 
     if ($data->text) {
@@ -103,7 +103,7 @@
             </a>
         </div>
     @endif
-@elseif($idUrl != '' && $findUrl)
+@elseif(isset($idUrl) && isset($findUrl))
     <div class="col-md-12 mb-3 text-center">
         <div class="video-container img-fluid shadow-sm">
             <iframe src="https://www.youtube.com/embed/{{ $idUrl[0] }}" frameborder="0"
@@ -112,7 +112,7 @@
         </div>
     </div>
     @php $findUrl=[] @endphp
-@elseif($idFileUrl != '' && $findUrl)
+@elseif(isset($idFileUrl) && isset($findUrl))
     <div class="col-md-12 mb-3 text-center">
         <iframe src="https://drive.google.com/{{ $idFileUrl[0] }}preview?usp=sharing&embedded=true"
                 style="width:100%; height:200px;" frameborder="0"></iframe>

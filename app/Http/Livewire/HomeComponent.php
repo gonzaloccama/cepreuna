@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\ContactForm;
 use App\Models\Document;
+use App\Models\Faq;
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\This;
 
@@ -22,6 +23,8 @@ class HomeComponent extends Component
     public $email;
     public $subject;
     public $message;
+
+    public $is_read = [];
 
     protected $rules = [
         'names' => 'required|min:3',
@@ -80,18 +83,18 @@ class HomeComponent extends Component
     {
         $this->validate($this->rules, [], $this->attributes);
 
-            $data = new ContactForm();
+        $data = new ContactForm();
 
-            $data->names = $this->names;
-            $data->phone = $this->phone;
-            $data->email = $this->email;
-            $data->subject = $this->subject;
-            $data->message = $this->message;
+        $data->names = $this->names;
+        $data->phone = $this->phone;
+        $data->email = $this->email;
+        $data->subject = $this->subject;
+        $data->message = $this->message;
 
-            if ($data->save()) {
-                session()->flash('message', 'Su mensaje se envió exitosamente!.');
-                $this->cleanItems();
-            }
+        if ($data->save()) {
+            session()->flash('message', 'Su mensaje se envió exitosamente!.');
+            $this->cleanItems();
+        }
 
     }
 
@@ -147,6 +150,21 @@ class HomeComponent extends Component
 
         if ($page) {
             $this->page = $page;
+        }
+    }
+
+    public function addReadFAQ($id = null)
+    {
+        try {
+            if (!in_array($id, $this->is_read)) {
+                $this->is_read[] = $id;
+
+                $data = Faq::find($id);
+                $data->faq_views = $data->faq_views + 1;
+                $data->save();
+
+            }
+        } catch (\Exception $e) {
         }
     }
 

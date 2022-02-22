@@ -340,21 +340,146 @@
     /*    display: block;*/
     /*}*/
 
-    .dropdown-menu{
+    .dropdown-menu {
         border-radius: 0;
     }
 
-    .dropdown-menu a:hover{
+    .dropdown-menu a:hover {
         background-color: #00365a;
     }
 
-    .font-13{
+    .font-13 {
         font-size: 13px;
     }
 
-    .font-rajdhani-16{
+    .font-rajdhani-16 {
         font-family: "Rajdhani", sans-serif !important;
         font-size: 16px;
+    }
+
+    .font-rajdhani{
+        font-family: "Rajdhani", sans-serif !important;
+    }
+
+    .btn-login {
+        border: 1px dashed #fff !important;
+        border-radius: 0;
+    }
+
+    .btn-login-responsive {
+        border: 1px dashed #00365A !important;
+        border-radius: 0;
+    }
+
+
+    .py-55 {
+        padding: 55px 0;
+    }
+
+    @media (max-width: 1199.98px) {
+        .py-115 {
+            padding: 50px 0;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        .py-115 {
+            padding: 40px 0;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .py-115 {
+            padding: 30px 0;
+        }
+    }
+
+
+</style>
+<style>
+
+    details {
+        width: 100%;
+        min-height: 5px;
+        padding: 15px 30px 15px 30px;
+        margin: 0 auto;
+        position: relative;
+        font-size: 24px;
+        border: 1px solid rgba(0, 0, 0, .1);
+        box-sizing: border-box;
+        transition: all .3s;
+        background-color: #00365A;
+    }
+
+    details + details {
+        margin-top: 10px;
+    }
+
+    details[open] {
+        min-height: 50px;
+        background-color: #f6f7f8;
+        box-shadow: 2px 2px 20px rgba(0, 0, 0, .2);
+    }
+
+    details[open] summary {
+        color: #00365A;
+        font-weight: 600;
+    }
+
+    details div ul p {
+        color: #454545;
+        font-weight: 200;
+    }
+
+    summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 200;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    summary:focus {
+        outline: none;
+    }
+
+    summary:focus::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 0 1px #00365A;
+    }
+
+    summary::-webkit-details-marker {
+        display: none
+    }
+
+    details .control-icon {
+        fill: #fff;
+    }
+
+    details[open] .control-icon {
+        fill: #00365A;
+        transition: .3s ease;
+        pointer-events: none;
+    }
+
+    .control-icon-close {
+        display: none;
+    }
+
+    details[open] .control-icon-close {
+        display: initial;
+        transition: .3s ease;
+    }
+
+    details[open] .control-icon-expand {
+        display: none;
     }
 
 </style>

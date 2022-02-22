@@ -76,11 +76,12 @@ $menus = \App\Models\SystemMenu::orderBy('order')->with('children', function ($q
                                     <div class="dropdown">
 
                                         <a type="text" id="dropdownMenuButton" data-toggle="dropdown"
-                                           aria-haspopup="true" aria-expanded="false" class="p-1 pb-0 m-0 align-middle"
-                                           style="border: 1px dashed #fff !important;">
-                                            <i class="simple-icon-user text-white"></i> <span class="font-rajdhani-16 pt-3 pointer-event">login</span>
+                                           aria-haspopup="true" aria-expanded="false" class="btn btn-login p-1 pb-0 m-0">
+                                            <i class="simple-icon-user text-white"></i>
+                                            <span class="font-rajdhani-16">login</span>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right p-1 mt-5" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-menu dropdown-menu-right p-1 mt-5"
+                                             aria-labelledby="dropdownMenuButton">
                                             @auth
                                                 @if(auth()->user()->role == 1)
                                                     <a href="#"
@@ -92,20 +93,20 @@ $menus = \App\Models\SystemMenu::orderBy('order')->with('children', function ($q
                                                         </div>
                                                     </a>
                                                 @endif
-                                                    <a href="#" class="hover-user row align-items-center"
-                                                       wire:click.prevent="goUrl('social.home')">
-                                                        <i class="simple-icon-speech col-2"></i>
-                                                        <div class="col-8 text-left align-middle">
-                                                            Media Social
-                                                        </div>
-                                                    </a>
-                                                    <a href="#" class="hover-user row align-items-center"
-                                                       wire:click.prevent="goUrl('logout')">
-                                                        <i class="simple-icon-logout col-2"></i>
-                                                        <div class="col-8 text-left align-middle">
-                                                            Cerrar
-                                                        </div>
-                                                    </a>
+                                                <a href="#" class="hover-user row align-items-center"
+                                                   wire:click.prevent="goUrl('social.home')">
+                                                    <i class="simple-icon-speech col-2"></i>
+                                                    <div class="col-8 text-left align-middle">
+                                                        Media Social
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="hover-user row align-items-center"
+                                                   wire:click.prevent="goUrl('logout')">
+                                                    <i class="simple-icon-logout col-2"></i>
+                                                    <div class="col-8 text-left align-middle">
+                                                        Cerrar
+                                                    </div>
+                                                </a>
                                             @else
                                                 <a href="#" class="hover-user row align-items-center"
                                                    wire:click.prevent="goUrl('login')">

@@ -7,8 +7,10 @@ use App\Http\Livewire\Admin\CycleComponent;
 use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\DocumentComponent;
 use App\Http\Livewire\Admin\EmploymentComponent;
+use App\Http\Livewire\Admin\FaqComponent;
 use App\Http\Livewire\Admin\ManualsAndServices;
 use App\Http\Livewire\Admin\ManualsAndServicesComponent;
+use App\Http\Livewire\Admin\Others\FaqSectionComponent;
 use App\Http\Livewire\Admin\PostComponent;
 use App\Http\Livewire\Admin\SliderComponent;
 use App\Http\Livewire\Admin\StatementComponent;
@@ -64,7 +66,10 @@ Route::middleware([UserBanned::class])->group(function () {
         Route::get('/admin/teams', TeamComponent::class)->name('admin.teams');
         Route::get('/admin/website', SystemSettingComponent::class)->name('admin.website');
         Route::get('/admin/sliders', SliderComponent::class)->name('admin.sliders');
+        Route::get('/admin/faqs', FaqComponent::class)->name('admin.faq');
         Route::get('/admin/manuals-and-services', ManualsAndServicesComponent::class)->name('admin.manuals-services');
+
+        Route::get('/admin/others/faq-section', FaqSectionComponent::class)->name('admin.faq-section');
 
         Route::get('/admin/users', UsersComponent::class)->name('admin.users');
         Route::get('/admin/media-posts', MediaPostComponent::class)->name('admin.media-post');
