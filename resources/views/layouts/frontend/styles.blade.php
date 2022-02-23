@@ -357,7 +357,7 @@
         font-size: 16px;
     }
 
-    .font-rajdhani{
+    .font-rajdhani {
         font-family: "Rajdhani", sans-serif !important;
     }
 
@@ -392,6 +392,82 @@
         .py-115 {
             padding: 30px 0;
         }
+    }
+
+    /*** icons social medias ***/
+    .btn.btn-social-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .template-demo > .btn {
+        margin-right: 1.0rem !important;
+        padding-top: 0.8rem !important;
+    }
+
+    .template-demo {
+        margin-top: 0.5rem !important
+    }
+
+    .btn-outline-facebook {
+        border: 1px solid #3b579d;
+        color: #3b579d
+    }
+
+    .btn-outline-facebook:hover {
+        background: #3b579d;
+        color: #ffffff
+    }
+
+    .btn-outline-whatsapp {
+        border: 1px solid #31983d;
+        color: #31983d
+    }
+
+    .btn-outline-whatsapp:hover {
+        background: #31983d;
+        color: #ffffff
+    }
+
+    .btn-outline-youtube {
+        border: 1px solid #e52d27;
+        color: #e52d27
+    }
+
+    .btn-outline-twitter {
+        border: 1px solid #2caae1;
+        color: #2caae1
+    }
+
+    .btn-outline-linkedin {
+        border: 1px solid #0177b5;
+        color: #0177b5
+    }
+
+    .btn-outline-instagram {
+        border: 1px solid #dc4a38;
+        color: #dc4a38
+    }
+
+    .btn-outline-twitter:hover {
+        background: #2caae1;
+        color: #ffffff
+    }
+
+    .btn-outline-linkedin:hover {
+        background: #0177b5;
+        color: #ffffff
+    }
+
+    .btn-outline-youtube:hover {
+        background: #e52d27;
+        color: #ffffff
+    }
+
+    .btn-outline-instagram:hover {
+        background: #e52d27;
+        color: #ffffff
     }
 
 

@@ -1,14 +1,37 @@
 <div class="map-with-pattern p-0 m-0">
+    <?php
+    $settings = \App\Models\SystemSetting::find(1);
+    $socials = json_decode($settings->website_media_social);
+    ?>
+
     <div class="container">
         <iframe style="width: 100%; height: 320px;"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1613.7705845990067!2d-70.02356842995145!3d-15.845297483774756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d69eaea3b9315%3A0xb8b5a947f95796a2!2sCEPREUNA!5e0!3m2!1ses!2spe!4v1637343855850!5m2!1ses!2spe"></iframe>
         <div class="contact-pattern">
             <img src="{{ asset('assets/images/contact/pattern.png') }}" class="pt-3 mt-3" alt="Pattern">
         </div>
+        <hr>
     </div>
 </div>
 
-<div class="contact-form-area pt-10 pb-10">
+@if(filled($socials[0]))
+    <div class="contact-form-area pt-2 pb-5">
+        <div class="container">
+            <div class="template-demo pb-2 text-center">
+                @foreach($socials[0] as $key => $social)
+                    @if(isset($social) && !empty($social))
+                        <a href="{{ $social }}" class="btn btn-social-icon btn-outline-{{ $key }}"
+                           target="_blank"> <i class="fa fa-{{ $key }}"></i>
+                        </a>
+                    @endif
+                @endforeach
+            </div>
+            <hr>
+        </div>
+    </div>
+@endif
+
+<div class="contact-form-area pt-5 pb-10">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -84,9 +107,7 @@
                     </div>
                 </form>
             </div>
-            <?php
-            $settings = \App\Models\SystemSetting::find(1);
-            ?>
+
             <div class="col-lg-6 ps-lg-10">
                 <div class="contact-content">
                     <h6 class="title mb-2" style="font-size: 36px;">Contacta con nosotros</h6>
