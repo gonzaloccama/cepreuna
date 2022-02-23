@@ -21,7 +21,8 @@
                 @foreach($socials[0] as $key => $social)
                     @if(isset($social) && !empty($social))
                         <a href="{{ $social }}" class="btn btn-social-icon btn-outline-{{ $key }}"
-                           target="_blank"> <i class="fa fa-{{ $key }}"></i>
+                           style="font-size: 20px;" target="_blank">
+                            <i class="ion-social-{{ $key }}"></i>
                         </a>
                     @endif
                 @endforeach

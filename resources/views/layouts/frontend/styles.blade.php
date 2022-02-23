@@ -403,7 +403,7 @@
 
     .template-demo > .btn {
         margin-right: 1.0rem !important;
-        padding-top: 0.8rem !important;
+        padding-top: 0.65rem !important;
     }
 
     .template-demo {
