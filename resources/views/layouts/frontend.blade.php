@@ -88,8 +88,8 @@
 
 <script>
     var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "2202093920029853");
-    // chatbox.setAttribute("page_id", "101410665199831");
+    // chatbox.setAttribute("page_id", "2202093920029853");
+    chatbox.setAttribute("page_id", "101410665199831");
     chatbox.setAttribute("attribution", "biz_inbox");
 </script>
 
