@@ -6,15 +6,15 @@
         <div id="circle-xlarge"></div>
         <div id="circle-xxlarge"></div>
     </div>
-    <div class="container p-0">
-        <div class="row no-gutters">
+    <div class="container p-0 align-middle">
+        <div class="row" >
             <div class="col-md-6 text-center pt-0">
                 @include('livewire.auth.panel-slider')
             </div>
-            <div class="col-md-6 bg-white pt-5">
-                <div class="sign-in-from" style="height: 550px; overflow-y: auto;">
+            <div class="col-md-6 bg-white p-3"  >
+                <div class="sign-in-from p-4" style="border: 1px solid #a5a5a5;">
                     <h1 class="mb-0 font-rajdhani weight-600">Iniciar sesión</h1>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link {{ $tab == 1 ? 'active' : ''}}" id="home-tab" data-toggle="tab"
                                href="#home" role="tab" wire:click.prevent="updateTab(1)"
@@ -28,12 +28,19 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content pb-3" id="myTabContent">
                         <div class="tab-pane fade {{ $tab == 1 ? 'show active' : ''}}" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <p>Inicie sesión con tu Cuenta Institucional de CEPREUNA.</p>
                             <div class="text-center mt-5">
-                                <a href="{{ route('auth.google') }}" class="btn btn-google mb-5">
-                                    <i class="ri-google-fill"></i>Inicar sesion con Google
+{{--                                <a href="{{ route('auth.google') }}" class="btn btn-google mb-5">--}}
+{{--                                    <i class="ri-google-fill"></i>Inicar sesion con Google--}}
+{{--                                </a>--}}
+
+                                <a href="{{ route('auth.google') }}" class="btn btn-icon-google  icon-google btn-block text-center">
+                                        <span>
+                                            <img src="https://img.icons8.com/color/48/000000/google-logo.png"
+                                                 class="img-fluid mr-1" width="25">
+                                        </span> Inicar sesion con Google
                                 </a>
                             </div>
                         </div>
@@ -87,7 +94,7 @@
 
                                     </div>
 
-                                    <div class="sign-info">
+                                    <div class="sign-info mb-3">
                                 <span class="dark-color d-inline-block line-height-2">¿No tienes una cuenta? <a
                                         href="{{ route('register') }}" class="roboto">Registrarme</a></span>
                                         <ul class="iq-social-media">
@@ -157,6 +164,33 @@
 
         .input-password[type=text]:valid {
             background-image: url("data:image/svg+xml,%3Csvg width='1em' height='1em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z'/%3E%3Cpath fill-rule='evenodd' d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/%3E%3C/svg%3E") !important;
+        }
+    </style>
+    <style>
+        .icon-google {
+            font-size: calc(14px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;;
+            padding: calc(7px + 5 * ((100vw - 320px) / 780)) !important;
+            color: #707070 !important
+        }
+
+        .icon-google:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        }
+
+        .btn-icon-google {
+            border: 1px solid #a5a5a5;
+            background-color: transparent;
+            border-radius: 0;
+            letter-spacing: 1px
+        }
+
+        .btn-icon-google:hover {
+            background-color: #2079D0;
+            color: #fff !important;
+            border: 1px solid #2079D0;
         }
     </style>
 @endpush

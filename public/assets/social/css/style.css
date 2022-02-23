@@ -554,7 +554,8 @@ a:hover {
 }
 
 .sign-in-page {
-    height: 100vh;
+    height: 130vh;
+    overflow: scroll;
     background: var(--iq-primary)
 }
 
@@ -630,9 +631,9 @@ a:hover {
     background: -webkit-linear-gradient(-45deg, #001928 0%, #0076e5 100%);
     background: linear-gradient(135deg, #00365A 0%, #0076e5 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adef', endColorstr='#0076e5', GradientType=1);
-    position: relative;
+    position: absolute;
     overflow: hidden;
-    height: 100vh;
+    height: 130vh;
     width: 100%;
     margin: 0px auto;
     padding: 0px auto;
