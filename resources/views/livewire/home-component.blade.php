@@ -94,6 +94,12 @@
             }
         })
 
+        $('.mobile-menu li a').on('click', function () {
+            setTimeout(function () {
+                $('.global-overlay').removeClass('overlay-open');
+            }, 500);
+        })
+
         function main_slider() {
             /* ---Main Slider--- */
             if ($('.main-slider-1').elExists()) {
