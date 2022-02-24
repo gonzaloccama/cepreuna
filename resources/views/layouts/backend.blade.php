@@ -8,7 +8,7 @@
     <meta content="CEPRE-UNAP" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="robots" content="index, follow"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}">
 

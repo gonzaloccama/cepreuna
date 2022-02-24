@@ -14,7 +14,7 @@
           content="El CEPRE-UNA es una unidad operativa que brinda a los estudiantes una formación complementaria a la obtenida en el nivel secundario...">
     <meta name="keywords" content="cepreuna.edu.pe, CEPRE, CEPREUNA, CEPREUNAP, UNA, UNAP, Universidad Nacional del Altiplano, Academia, Puno"/>
 {{--    <meta name="google-site-verification" content="googledf79e92c0288f019"/>--}}
-    <meta name="robots" content="noindex,nofollow">
+{{--    <meta name="robots" content="noindex,nofollow">--}}
     <meta name="robots" content="index, follow"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
