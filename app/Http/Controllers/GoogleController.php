@@ -21,7 +21,7 @@ class GoogleController extends Controller
     public function goHandleCallback()
     {
         try {
-            $user = Socialite::driver('google')->user();
+            $user = Socialite::driver('google')->stateless()->user();
 
             $verify_user = $this->findUser($user->email, $user->id);
 

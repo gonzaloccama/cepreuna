@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://cepreuna.edu.pe/sitemap.xml
+Sitemap: https://cepreuna.edu.pe/sitemap.xml

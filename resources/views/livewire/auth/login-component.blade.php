@@ -7,11 +7,11 @@
         <div id="circle-xxlarge"></div>
     </div>
     <div class="container p-0 align-middle">
-        <div class="row" >
+        <div class="row">
             <div class="col-md-6 text-center pt-0">
                 @include('livewire.auth.panel-slider')
             </div>
-            <div class="col-md-6 bg-white p-3"  >
+            <div class="col-md-6 bg-white p-3">
                 <div class="sign-in-from p-4" style="border: 1px solid #a5a5a5;">
                     <h1 class="mb-0 font-rajdhani weight-600">Iniciar sesión</h1>
                     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
@@ -28,23 +28,28 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content pb-3" id="myTabContent">
-                        <div class="tab-pane fade {{ $tab == 1 ? 'show active' : ''}}" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-content pb-3" id="myTabContent" ondragstart="return false"
+                         onselectstart="return false" oncontextmenu="return false">
+                        <div class="tab-pane fade {{ $tab == 1 ? 'show active' : ''}}" id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
                             <p>Inicie sesión con tu Cuenta Institucional de CEPREUNA.</p>
                             <div class="text-center mt-5">
-{{--                                <a href="{{ route('auth.google') }}" class="btn btn-google mb-5">--}}
-{{--                                    <i class="ri-google-fill"></i>Inicar sesion con Google--}}
-{{--                                </a>--}}
+                                {{--                                <a href="{{ route('auth.google') }}" class="btn btn-google mb-5">--}}
+                                {{--                                    <i class="ri-google-fill"></i>Inicar sesion con Google--}}
+                                {{--                                </a>--}}
 
-                                <a href="{{ route('auth.google') }}" class="btn btn-icon-google  icon-google btn-block text-center">
+                                <a href="{{ route('auth.google') }}"
+                                   class="btn btn-icon-google align-middle icon-google btn-block text-center">
                                         <span>
-                                            <img src="https://img.icons8.com/color/48/000000/google-logo.png"
-                                                 class="img-fluid mr-1" width="25">
-                                        </span> Inicar sesion con Google
+                                            <img src="{{ asset('assets/images/icon/google.svg') }}"
+                                                 class="img-fluid" width="18">
+                                        </span>
+                                    <span class="align-middle">Inicar sesion con Google</span>
                                 </a>
                             </div>
                         </div>
-                        <div class="tab-pane fade {{ $tab == 2 ? 'show active' : ''}}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade {{ $tab == 2 ? 'show active' : ''}}" id="profile" role="tabpanel"
+                             aria-labelledby="profile-tab">
                             <p>Ingrese su dirección de correo electrónico y contraseña para acceder.</p>
                             <form class="mt-4">
                                 @csrf
@@ -188,9 +193,9 @@
         }
 
         .btn-icon-google:hover {
-            background-color: #2079D0;
+            background-color: #3c79e6;
             color: #fff !important;
-            border: 1px solid #2079D0;
+            border: 1px solid #3c79e6;
         }
     </style>
 @endpush
@@ -220,6 +225,8 @@
                 }
             }
         };
+
+
     </script>
 @endpush
 

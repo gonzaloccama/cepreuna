@@ -16,7 +16,7 @@ $menus = \App\Models\SystemMenu::orderBy('order')->with('children', function ($q
                             $iter = 0;
                             ?>
                             @foreach($menus as $menu)
-                                <li class="drop-holder {{ $menu->page == $_menu ?'active-menu':'' }}">
+                                <li class="drop-holder {{ $menu->page == $_menu ? 'active-menu' : '' }}">
                                     <a href="javascript:;"
                                        @if($menu->is_route)
                                        wire:click.prevent="updateMenu('{{ $menu->page }}', '{{ $menu->name }}')"
