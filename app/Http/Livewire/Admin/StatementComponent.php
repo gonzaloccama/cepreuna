@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Statement;
+use Cache;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -172,6 +173,8 @@ class StatementComponent extends BaseComponent
         $this->created_at = null;
 
         $this->findURL = null;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

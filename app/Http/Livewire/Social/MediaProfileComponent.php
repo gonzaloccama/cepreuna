@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Social;
 use App\Models\MediaPost;
 use App\Models\MediaPostsPhoto;
 use App\Models\User;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Image;
@@ -182,6 +183,11 @@ class MediaProfileComponent extends Component
         $this->new_bg_source = null;
         $this->profile_source = null;
         $this->new_profile_source = null;
+
+        Cache::flush();
+
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
 
 

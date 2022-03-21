@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Document;
+use Cache;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -174,6 +175,8 @@ class DocumentComponent extends BaseComponent
         $this->url = null;
         $this->category_document = null;
         $this->findURL = null;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

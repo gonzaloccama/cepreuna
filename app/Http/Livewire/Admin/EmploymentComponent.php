@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Employment;
+use Cache;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -274,6 +275,8 @@ class EmploymentComponent extends BaseComponent
 
         $this->inRequires = $this->inSchedule = $this->inFiles = [];
         $this->itRe = $this->inSche = $this->inFi = 0;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

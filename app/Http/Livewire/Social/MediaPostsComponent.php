@@ -11,6 +11,7 @@ use App\Models\MediaPostsPhoto;
 use App\Models\MediaPostsReaction;
 use App\Models\MediaPostsSavedItem;
 use App\Models\MediaPostsVideo;
+use Cache;
 use Carbon\Carbon;
 use DB;
 use Exception;
@@ -553,6 +554,8 @@ class MediaPostsComponent extends Component
         $this->video_source = null;
         $this->file_source = null;
         $this->post_type = '';
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

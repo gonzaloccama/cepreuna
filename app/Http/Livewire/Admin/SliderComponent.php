@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\systemSlider;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -216,6 +217,8 @@ class SliderComponent extends BaseComponent
         $this->image = null;
         $this->newImage = null;
         $this->editImage = null;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

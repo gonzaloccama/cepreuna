@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\CycleAcademy;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
@@ -223,6 +224,8 @@ class CycleComponent extends BaseComponent
         $this->price = null;
         $this->horary = null;
         $this->status = 1;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

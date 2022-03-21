@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Faq;
 use App\Models\FaqSection;
+use Cache;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -208,6 +209,8 @@ class FaqComponent extends BaseComponent
 
         $this->inInputs = [];
         $this->itIn = 0;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\ManualsAndServices;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
@@ -213,6 +214,8 @@ class ManualsAndServicesComponent extends BaseComponent
         $this->image = null;
         $this->newImage = null;
         $this->editImage = null;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

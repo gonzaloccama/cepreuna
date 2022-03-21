@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Post;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -236,6 +237,8 @@ class PostComponent extends BaseComponent
         $this->newImage = null;
         $this->editImage = null;
         $this->status = 1;
+
+        Cache::flush();
 
         $this->resetErrorBag();
         $this->resetValidation();

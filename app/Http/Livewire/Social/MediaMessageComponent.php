@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Social;
 use App\Models\MediaEmojis;
 use App\Models\MediaMessage;
 use App\Models\User;
+use Cache;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Exception;
@@ -114,5 +115,10 @@ class MediaMessageComponent extends Component
     public function cleanItems()
     {
         $this->message = null;
+
+        Cache::flush();
+
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
 }

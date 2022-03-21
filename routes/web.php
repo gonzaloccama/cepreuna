@@ -46,8 +46,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/login', \App\Http\Livewire\Auth\LoginComponent::class)->name('login');
-//Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
-Route::get('/register', function (){ return view('errors.404');})->name('register');
+Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
+//Route::get('/register', function (){ return view('errors.404');})->name('register');
 Route::get('/send-reset-email', \App\Http\Livewire\Auth\SendResetEmailComponent::class)->name('send-reset-email');
 Route::get('/auth/google', [GoogleController::class, 'goToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [GoogleController::class, 'goHandleCallback'])->name('auth.callback');
@@ -89,3 +89,18 @@ Route::middleware([UserBanned::class])->group(function () {
 });
 
 
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+
+    dd("Cache Clear All");
+});
+
+Route::get('/clear-log', function () {
+    exec('rm -f ' . storage_path('logs/*.log'));
+    dd("Logs have been cleared!");
+});
+
+Route::get('/clear-temp', function () {
+    exec('rm -f ' . public_path('assets/livewire-tmp/*'));
+    dd("Temps have been cleared!");
+});

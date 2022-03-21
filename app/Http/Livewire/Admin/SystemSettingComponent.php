@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\SystemSetting;
+use Cache;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -319,5 +320,10 @@ class SystemSettingComponent extends Component
         $this->edit_logo_2sd = null;
         $this->website_favicon = null;
         $this->edit_favicon = null;
+
+        Cache::flush();
+
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
 }
