@@ -89,6 +89,26 @@
 
                 <?php
                 $dt = [
+                    'name' => 'price',
+                    'text' => 'Precios',
+                    'required' => 1,
+                    'type' => 1,
+                ];
+                ?>
+                @include('livewire.widgets.form.textarea', $dt)
+
+                <?php
+                $dt = [
+                    'name' => 'horary',
+                    'text' => 'Horarios',
+                    'required' => 1,
+                    'type' => 1,
+                ];
+                ?>
+                @include('livewire.widgets.form.textarea', $dt)
+
+                <?php
+                $dt = [
                     'name' => 'status',
                     'text' => 'Estado',
                     'required' => 0,

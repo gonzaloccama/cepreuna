@@ -16,6 +16,7 @@
     <script src="{{ asset('assets/plugins/flatpickr/flatpickr.js') }}"></script>
     <script src="{{ asset('assets/plugins/flatpickr/es.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/switchery/switchery.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -23,7 +24,10 @@
                 $('.text-errors').text('');
             });
 
-            window.livewire.on('refreshPicker', () => {
+            window.livewire.on('refreshSection', () => {
+                activeCkeditor('#price', 'price');
+                activeCkeditor('#horary', 'horary');
+
                 activeFlatpickr('#start_register', 1);
                 activeFlatpickr('#finish_register', 1);
 
@@ -34,7 +38,7 @@
             window.livewire.on('refreshComponent', () => {
                 $('[data-plugin="switchery"]').each(function (e) {
                     new Switchery($(this)[0], $(this).data())
-                })
+                });
             });
 
             window.livewire.on('deleteAlert', () => {
@@ -57,6 +61,20 @@
                 disableMobile: "true",
                 "locale": "es"
             });
+        }
+
+        function activeCkeditor(sel, varModel) {
+            ClassicEditor
+                .create(document.querySelector(sel))
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                        @this.
+                        set(varModel, editor.getData());
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     </script>
 @endpush

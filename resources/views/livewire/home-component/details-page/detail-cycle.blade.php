@@ -59,82 +59,13 @@
                             <td scope="col" class="text-right">{{ $this->dateSpanish($result->finish_class) }}</td>
                         </tr>
                     </table>
+
                     <h5 class="mt-10 mb-2">Costos</h5>
-                    <table class="table mt-5 table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Concepto</th>
-                            <th scope="col">Colegio Privado</th>
-                            <th scope="col">Colegio Estatal</th>
-                            <th scope="col">Días de Pago</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Inscripción y Matrícula</th>
-                            <td>S/ 270.60</td>
-                            <td>S/ 215.60</td>
-                            <td>29/12/2020 - 16/01/21</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1ra. Cuota</th>
-                            <td>S/ 250.60</td>
-                            <td>S/ 200.60</td>
-                            <td>15-25/02/2021</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2da. Cuota</th>
-                            <td>S/ 250.60</td>
-                            <td>S/ 200.60</td>
-                            <td>15-26/03/2021</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3ra. Cuota</th>
-                            <td>S/ 250.60</td>
-                            <td>S/ 200.60</td>
-                            <td>15-26/04/2021</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4ta. Cuota</th>
-                            <td>S/ 250.60</td>
-                            <td>S/ 200.60</td>
-                            <td>10-15/05/2021</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Rezagados y Cuotas Retrasadas</th>
-                            <td>S/ 30.60</td>
-                            <td>S/ 30.60</td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    {!! $result->price !!}
+
                     <h5 class="mt-10 mb-2">Turnos</h5>
-                    <table class="table mt-5 table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Turno</th>
-                            <th scope="col">Hora Inicio</th>
-                            <th scope="col">Hora Final</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Mañana</th>
-                            <td>07:30:00</td>
-                            <td>11:50:00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Tarde</th>
-                            <td>12:30:00</td>
-                            <td>16:50:00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Noche</th>
-                            <td>17:20:00</td>
-                            <td>21:30:00</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    {!! $result->horary !!}
+
                     <div class="mt-10 mb-2">
                         <div class="user-content mt-3">
                             <div class="button-wrap">
