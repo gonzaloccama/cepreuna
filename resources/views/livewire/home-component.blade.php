@@ -100,6 +100,10 @@
             }, 500);
         })
 
+        $('table').ready(function () {
+            $('table').addClass('table mt-5 table-hover');
+        });
+
         function main_slider() {
             /* ---Main Slider--- */
             if ($('.main-slider-1').elExists()) {

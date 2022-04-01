@@ -110,6 +110,33 @@
         .font-10 {
            font-size: 10px;
         }
+
+        .ck.ck-editor__main,
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-focused.ck-editor__editable_inline,
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-blurred.ck-editor__editable_inline {
+            min-height: 120px !important;
+            max-height: 200px !important;
+        }
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-focused.ck-editor__editable_inline::-webkit-scrollbar-track,
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-blurred.ck-editor__editable_inline::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #b0b0b0;
+            border-radius: 10px;
+        }
+
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-focused.ck-editor__editable_inline::-webkit-scrollbar,
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-blurred.ck-editor__editable_inline::-webkit-scrollbar {
+            border-radius: 10px;
+            width: 5px;
+            height: 5px;
+            background-color: #b0b0b0;
+        }
+
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-focused.ck-editor__editable_inline::-webkit-scrollbar-thumb,
+        .ck.ck-editor__main .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-blurred.ck-editor__editable_inline::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #53575a;
+        }
     </style>
 
 </head>

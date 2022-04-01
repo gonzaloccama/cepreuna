@@ -22,26 +22,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-2 col-sm-6 pl-xl-80 pt-8 pt-lg-0">
+                <div class="col-xl-4 col-lg-4 col-sm-6 pl-xl-2 pt-8 pt-lg-0">
                     <div class="widget-item">
                         <?php
                         $page = $settings->website_facebook_page ? $settings->website_facebook_page : 'https://www.facebook.com/facebook';
                         ?>
                         <iframe
                             src="https://www.facebook.com/plugins/page.php?href={{ urlencode($page) }}&tabs=timeline&width=340&height=360&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1611044149071760"
-                            width="340" height="360" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                            width="100%" height="360" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                             allowfullscreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 ps-lg-10 pt-8 pt-lg-0">
+                <div class="col-xl-2 col-lg-2 col-sm-6 pl-xl-2 pt-8 pt-lg-0">
                     <div class="widget-item">
-                        {{--                        <h3 class="heading text-white mb-6">Quick Links</h3>--}}
-                        {{--                        <ul class="widget-list-item text-hawkes-blue">--}}
-                        {{--                            <li>--}}
-                        {{--                                <a href="#">Support Center</a>--}}
-                        {{--                            </li>                          --}}
-                        {{--                        </ul>--}}
+                        @livewire('menu-footer-component', key(1))
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 pt-8 pt-lg-0">
@@ -120,17 +115,18 @@
 
 <!-- Your SDK code -->
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            xfbml            : true,
-            version          : 'v13.0'
+            xfbml: true,
+            version: 'v13.0'
         });
     };
 
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
