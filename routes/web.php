@@ -47,8 +47,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/login', \App\Http\Livewire\Auth\LoginComponent::class)->name('login');
-Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
-//Route::get('/register', function (){ return view('errors.404');})->name('register');
+//Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
+Route::get('/register', function (){ return view('errors.404');})->name('register');
 Route::get('/send-reset-email', \App\Http\Livewire\Auth\SendResetEmailComponent::class)->name('send-reset-email');
 Route::get('/auth/google', [GoogleController::class, 'goToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [GoogleController::class, 'goHandleCallback'])->name('auth.callback');
