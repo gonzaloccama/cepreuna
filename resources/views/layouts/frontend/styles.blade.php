@@ -558,4 +558,10 @@
         display: none;
     }
 
+    /*** justify content ***/
+    .justify-text p{
+        display: flex !important;
+        justify-content: end !important;
+    }
+
 </style>
