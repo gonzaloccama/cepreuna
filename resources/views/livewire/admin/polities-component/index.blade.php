@@ -9,9 +9,9 @@
 
             'not' => 'col-2',
         ],
-        (object)[//parent for model
-            'model' => 'parent', 'value' => 'title'
-        ]
+        //parent for model
+//            'model' => 'parent', 'value' => 'title'
+
     ];
 
     ?>
