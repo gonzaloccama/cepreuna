@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\PrivacyPolicy;
 use Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,7 +23,7 @@ class PolitiesComponent extends BaseComponent
 
     public $headers = [
         'title' => 'Titulos',
-        'group' => 'Grupo',
+        'subtitle' => 'Grupo',
         'order' => 'Orden',
         'status' => 'Estado',
 
@@ -56,7 +57,7 @@ class PolitiesComponent extends BaseComponent
 
     public function render()
     {
-        $_pre = array_diff(array_keys($this->headers), ['not']);
+        $_pre = array_diff(array_keys($this->headers), ['not', 'subtitle']);
         $findIn = [];
         $table = 'privacy_policies';
 
@@ -64,12 +65,17 @@ class PolitiesComponent extends BaseComponent
             $findIn[] = $table . '.' . $item;
         }
 
+        $findIn[] = 'policies.title';
+
         $data['results'] = PrivacyPolicy::orderBy($this->fieldSort, $this->sort)
             ->orWhere(function ($query) use ($findIn) {
                 foreach ($findIn as $in) {
                     $query->orWhere($in, 'LIKE', '%' . $this->keyWord . '%');
                 }
             })
+            ->select($table . '.*')
+            ->selectRaw('policies.title as subtitle')
+            ->leftJoin('privacy_policies as policies', $table.'.group', '=', 'policies.id')
             ->paginate($this->limit);
 
         $data['_title'] = 'Políticas de privacidas';

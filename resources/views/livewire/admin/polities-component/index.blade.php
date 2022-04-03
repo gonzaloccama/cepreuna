@@ -3,13 +3,15 @@
     $dt = [
         'col' => [
             'title' => 'col-4',
-            'group' => 'col-4',
+            'subtitle' => 'col-4',
             'order' => 'col-1',
             'status' => 'col-2',
 
             'not' => 'col-2',
         ],
-        'model' => 'parent', 'value' => 'title' //parent for model
+        (object)[//parent for model
+            'model' => 'parent', 'value' => 'title'
+        ]
     ];
 
     ?>

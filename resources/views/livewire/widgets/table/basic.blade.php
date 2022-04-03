@@ -27,7 +27,7 @@
             <tr>
                 @foreach(array_keys($headers) as $header)
                     <td>
-                        @if(!in_array($header, ['not', 'status', 'user_activated', 'url', 'image', 'phone', 'email', 'group']))
+                        @if(!in_array($header, ['not', 'status', 'user_activated', 'url', 'image', 'phone', 'email']))
                             @if(isset($setting[$header]) && !empty($setting[$header]))
                                 <p class="m-0 font-weight-normal">{{ $this->timeElapsedString($item[$header]) }}</p>
                             @else
@@ -50,14 +50,6 @@
                                  style="background-image: url('{{ asset($img_path).'/'. $item[$header] }}');
                                      width: auto; height: 80px; background-size: cover;"></div>
 
-                        @elseif($header == 'group')
-                            @if(isset($model) && !empty($model))
-                                <p class="m-0 font-weight-normal">
-                                    {{ $item[$model][$value] }} {{ '(id: ' . $item[$header] . ')' > 0 ? $item[$header] : '' }}
-                                </p>
-                            @else
-                                <p class="m-0 font-weight-normal">{{ $item[$header] }}</p>
-                            @endif
 
                         @else
                             <div class="btn-group dropleft">
