@@ -41,7 +41,7 @@
                                     <b><u>INICIO DE CLASES</u>: <br> {{ $this->dateSpanish($cycle->start_class) }}</b>
                                     <hr>
                                     @php
-                                        $status = Carbon\Carbon::now() <= $cycle->finish_register;
+                                        $status = Carbon\Carbon::now() <= Carbon\Carbon::create($cycle->finish_register)->addHours(24);
                                         $status = (int)$cycle->status && $status;
                                     @endphp
                                     @if($status)

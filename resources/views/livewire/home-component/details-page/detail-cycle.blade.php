@@ -34,7 +34,7 @@
                 <div class="col-xl-6 col-lg-6" style="text-align: justify !important;">
                     <h5 class="mb-2">Estado</h5>
                     @php
-                        $status = Carbon\Carbon::now() <= $result->finish_register;
+                        $status = Carbon\Carbon::now() <= Carbon\Carbon::create($result->finish_register)->addHours(24);
                         $status = (int)$result->status && $status;
                     @endphp
                     <span

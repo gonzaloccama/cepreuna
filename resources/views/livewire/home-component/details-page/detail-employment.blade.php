@@ -58,7 +58,7 @@
                         @endforeach
                     </table>
 
-                    @if(Carbon\Carbon::now() <= $result->end_employments)
+                    @if(Carbon\Carbon::now() <= Carbon\Carbon::create($result->end_employments)->addHours(24))
                         <div class="mt-10 mb-2">
                             <div class="user-content mt-3">
                                 <div class="button-wrap">
@@ -90,7 +90,7 @@
                 <div class="col-xl-7 col-lg-7" style="text-align: justify !important;">
                     <h5 class="mt-10 mb-2">Estado</h5>
                     <?php
-                    $status = Carbon\Carbon::now() <= $result->end_employments;
+                    $status = Carbon\Carbon::now() <= Carbon\Carbon::create($result->end_employments)->addHours(24);
                     $status = (int)$result->status && $status;
                     ?>
                     <span

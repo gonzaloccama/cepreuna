@@ -39,7 +39,7 @@
                                                 </u>
                                                 <div class="blog-meta d-block font-italic">
                                                     @php
-                                                    $status = Carbon\Carbon::now() <= $employment->end_employments;
+                                                    $status = Carbon\Carbon::now() <= Carbon\Carbon::create($employment->end_employments)->addHours(24);
                                                     $status = (int)$employment->status && $status;
                                                     @endphp
                                                     <span
