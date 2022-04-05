@@ -20,8 +20,12 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-5" style="text-align: justify !important;">
                     <h5 class="mt-10 mb-2">
-                        {{ $this->dateSpanish($result->start_employments) }}
-                        - {{ $this->dateSpanish($result->end_employments) }}
+                        <?php
+                        echo ucfirst(Carbon\Carbon::parse($result->start_employments)
+                                ->locale('es')->translatedFormat('l d \d\e F \d\e\l Y | g:i A')) . ' &mdash; ' .
+                            ucfirst(Carbon\Carbon::parse($result->end_employments)
+                                ->locale('es')->translatedFormat('l d \d\e F \d\e\l Y | g:i A'))
+                        ?>
                     </h5>
                     <p class="font-size-16 mb-0">{{ $result->description }}</p>
                     <h5 class="mt-10 mb-2">Cronograma</h5>
@@ -58,7 +62,7 @@
                         @endforeach
                     </table>
 
-                    @if(Carbon\Carbon::now() <= Carbon\Carbon::create($result->end_employments)->addHours(24))
+                    @if(Carbon\Carbon::now() <= $result->end_employments)
                         <div class="mt-10 mb-2">
                             <div class="user-content mt-3">
                                 <div class="button-wrap">
@@ -90,7 +94,7 @@
                 <div class="col-xl-7 col-lg-7" style="text-align: justify !important;">
                     <h5 class="mt-10 mb-2">Estado</h5>
                     <?php
-                    $status = Carbon\Carbon::now() <= Carbon\Carbon::create($result->end_employments)->addHours(24);
+                    $status = Carbon\Carbon::now() <= $result->end_employments;
                     $status = (int)$result->status && $status;
                     ?>
                     <span

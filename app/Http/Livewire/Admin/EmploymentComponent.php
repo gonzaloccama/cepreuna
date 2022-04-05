@@ -75,8 +75,8 @@ class EmploymentComponent extends BaseComponent
         'is_url' => 'nullable',
         'url' => 'required|url',
         'file_employment' => 'nullable',
-        'start_employments' => 'required|date_format:Y-m-d',
-        'end_employments' => 'required|date_format:Y-m-d',
+        'start_employments' => 'required|date_format:Y-m-d H:i',
+        'end_employments' => 'required|date_format:Y-m-d H:i',
         'schedule' => 'nullable',
         'go_link' => 'required|url',
         'status' => 'nullable',
@@ -184,8 +184,8 @@ class EmploymentComponent extends BaseComponent
         $this->is_url = $data->is_url;
         $this->url = $data->url;
         $this->file_employment = $data->file_employment;
-        $this->start_employments = Carbon::parse($data->start_employments)->format('Y-m-d');
-        $this->end_employments = Carbon::parse($data->end_employments)->format('Y-m-d');;
+        $this->start_employments = Carbon::parse($data->start_employments)->format('Y-m-d H:i');
+        $this->end_employments = Carbon::parse($data->end_employments)->format('Y-m-d H:i');;
         $this->schedule = json_decode($data->schedule);
         $this->go_link = $data->go_link;
         $this->status = (int)$data->status;

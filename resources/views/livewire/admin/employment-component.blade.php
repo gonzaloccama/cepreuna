@@ -23,8 +23,8 @@
 
             window.livewire.on('refreshSection', () => {
                 activeSelect2('#category_document', 'category_document');
-                activeFlatpickr('#start_employments');
-                activeFlatpickr('#end_employments');
+                activeFlatpickr('#start_employments', true);
+                activeFlatpickr('#end_employments', true);
                 activeRangeFlatpickr('.range-schedule');
             });
 

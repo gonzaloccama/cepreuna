@@ -31,7 +31,13 @@
                                                 <span class="user-occupation">{{ $employment->description }}</span>
                                                 <br>
                                                 <span class="blog-meta d-block border-1">
-                                                {{ $this->dateSpanish($employment->start_employments) }} - {{ $this->dateSpanish($employment->end_employments) }}
+                                                    <?php
+                                                    echo ucfirst(Carbon\Carbon::parse($employment->start_employments)
+                                                        ->locale('es')->translatedFormat('l d \d\e F \d\e\l Y | g:i A')) . ' &mdash; ' .
+                                                    ucfirst(Carbon\Carbon::parse($employment->end_employments)
+                                                        ->locale('es')->translatedFormat('l d \d\e F \d\e\l Y | g:i A'))
+                                                    ?>
+{{--                                                {{ $this->dateSpanish($employment->start_employments) }} - {{ $this->dateSpanish($employment->end_employments) }}--}}
                                             </span>
                                                 <u class="blog-meta d-block font-italic"
                                                    style="font-size: 16px; color: #00365A;">
@@ -39,7 +45,7 @@
                                                 </u>
                                                 <div class="blog-meta d-block font-italic">
                                                     @php
-                                                    $status = Carbon\Carbon::now() <= Carbon\Carbon::create($employment->end_employments)->addHours(24);
+                                                    $status = Carbon\Carbon::now() <= $employment->end_employments;
                                                     $status = (int)$employment->status && $status;
                                                     @endphp
                                                     <span
