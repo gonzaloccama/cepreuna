@@ -48,7 +48,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/login', \App\Http\Livewire\Auth\LoginComponent::class)->name('login');
 //Route::get('/register', \App\Http\Livewire\Auth\RegisterComponent::class)->name('register');
-Route::get('/register', function (){ return view('errors.404');})->name('register');
+Route::get('/register', function () {
+    return view('errors.404');
+})->name('register');
 Route::get('/send-reset-email', \App\Http\Livewire\Auth\SendResetEmailComponent::class)->name('send-reset-email');
 Route::get('/auth/google', [GoogleController::class, 'goToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [GoogleController::class, 'goHandleCallback'])->name('auth.callback');
@@ -92,27 +94,15 @@ Route::middleware([UserBanned::class])->group(function () {
 
 Route::get('/clear', function () {
     $output = new \Symfony\Component\Console\Output\BufferedOutput();
-    Artisan::call('cache:clear');
-    Artisan::call('view:clear');
-    Artisan::call('config:clear');
     Artisan::call('log:clear');
     Artisan::call('optimize:clear', array(), $output);
     return $output->fetch();
-})->name('/clear');
+})->name('clear');
 
 Route::get('/clear-temp', function () {
-
-    $path = public_path('assets/livewire-tmp');
-    $files = File::files($path);
-
-    foreach ($files as $file) {
-        $yesterdayStamp = now()->subHours(12)->timestamp;
-
-        if ($yesterdayStamp > File::lastModified($file)) {
-            File::delete($path . '/' . $file->getFilename());
-        }
-    }
+    $output = new \Symfony\Component\Console\Output\BufferedOutput();
+    Artisan::call('temp:file');
 
     exec('rm -f ' . public_path('assets/livewire-tmp/*'));
-    dd("Temps have been cleared!");
-});
+    dd('Temporary files have been cleared');
+})->name('clear-temp');

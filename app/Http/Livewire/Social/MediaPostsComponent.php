@@ -109,19 +109,19 @@ class MediaPostsComponent extends Component
         }
     }
 
-    protected function cleanupOldUploads()
-    {
-        $path = public_path('assets/livewire-tmp');
-        $files = File::files($path);
-
-        foreach ($files as $file) {
-            $yesterdayStamp = now()->subHours(12)->timestamp;
-
-            if ($yesterdayStamp > File::lastModified($file)) {
-                File::delete($path . '/' . $file->getFilename());
-            }
-        }
-    }
+//    protected function cleanupOldUploads()
+//    {
+//        $path = public_path('assets/livewire-tmp');
+//        $files = File::files($path);
+//
+//        foreach ($files as $file) {
+//            $yesterdayStamp = now()->subHours(12)->timestamp;
+//
+//            if ($yesterdayStamp > File::lastModified($file)) {
+//                File::delete($path . '/' . $file->getFilename());
+//            }
+//        }
+//    }
 
     public function render()
     {
