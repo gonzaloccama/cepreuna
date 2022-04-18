@@ -48,7 +48,7 @@
     </div>
     <div class="iq-card">
         <?php
-        $birthdates = \App\Models\User::paginate(5);
+        $birthdates = \App\Models\User::whereNotIn('username', ['root'])->paginate(5);
 
         //        echo $this->birthdate_diff('1987-12-07', 1);
 

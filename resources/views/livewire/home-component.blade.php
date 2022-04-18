@@ -61,6 +61,7 @@
                 main_slider();
                 team_1();
                 blog_1();
+                initTable()
             });
 
             window.livewire.on('loadingPage', () => {
@@ -73,6 +74,7 @@
             team_1();
             load_page();
             blog_1();
+            initTable()
 
             $(".trigger_popup_fricc").click(function () {
                 $('.hover_bkgr_fricc').show();
@@ -100,9 +102,9 @@
             }, 500);
         })
 
-        $('table').ready(function () {
+        function initTable() {
             $('table').addClass('table mt-5 table-hover');
-        });
+        }
 
         function main_slider() {
             /* ---Main Slider--- */

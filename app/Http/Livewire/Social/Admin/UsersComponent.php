@@ -131,7 +131,7 @@ class UsersComponent extends BaseComponent
                 }
                 $query->orWhere(DB::raw("CONCAT(user_firstname, ' ', user_lastname)"), 'LIKE', '%' . $this->keyWord . '%');
             })
-//            ->where('username', '!=', 'root')
+            ->whereNotIn('username', ['root'])
             ->select('users.*')
             ->selectRaw('CONCAT(users.user_firstname," ",users.user_lastname) as fullname')
             ->paginate($this->limit);

@@ -43,7 +43,7 @@ class MediaMessageComponent extends Component
     {
         $data['_title'] = 'Chat';
 
-        $data['users'] = User::orderBy('user_is_online', 'desc')->orderBy('user_last_activity', 'desc')
+        $data['users'] = User::orderBy('user_is_online', 'desc')->whereNotIn('username', ['root'])->orderBy('user_last_activity', 'desc')
             ->orWhere(function ($query) {
                 $query->orWhere(DB::raw("CONCAT(user_firstname, ' ', user_lastname)"), 'LIKE', '%' . $this->keyWord . '%');
             })

@@ -1,6 +1,6 @@
 <div class="right-sidebar-mini right-sidebar">
     <?php
-    $users = \App\Models\User::orderBy('user_is_online', 'desc')->orderBy('user_last_activity', 'desc')->paginate(10);
+    $users = \App\Models\User::orderBy('user_is_online', 'desc')->orderBy('user_last_activity', 'desc')->whereNotIn('username', ['root'])->paginate(10);
     ?>
     <div class="right-sidebar-panel p-0">
         <div class="iq-card shadow-none">

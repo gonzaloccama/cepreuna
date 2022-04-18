@@ -8,7 +8,6 @@ use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\DocumentComponent;
 use App\Http\Livewire\Admin\EmploymentComponent;
 use App\Http\Livewire\Admin\FaqComponent;
-use App\Http\Livewire\Admin\ManualsAndServices;
 use App\Http\Livewire\Admin\ManualsAndServicesComponent;
 use App\Http\Livewire\Admin\Others\FaqSectionComponent;
 use App\Http\Livewire\Admin\PolitiesComponent;
@@ -90,19 +89,18 @@ Route::middleware([UserBanned::class])->group(function () {
     });
 });
 
-
-Route::get('/clear-cache', function () {
+Route::get('/clear', function () {
+    $output = new \Symfony\Component\Console\Output\BufferedOutput();
     Artisan::call('cache:clear');
-
-    dd("Cache Clear All");
-});
-
-Route::get('/clear-log', function () {
-    exec('rm -f ' . storage_path('logs/*.log'));
-    dd("Logs have been cleared!");
-});
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    Artisan::call('log:clear');
+    Artisan::call('optimize:clear', array(), $output);
+    return $output->fetch();
+})->name('/clear');
 
 Route::get('/clear-temp', function () {
+//    File::delete(public_path('assets/livewire-tmp/*'));
     exec('rm -f ' . public_path('assets/livewire-tmp/*'));
     dd("Temps have been cleared!");
 });
