@@ -27,6 +27,7 @@ use App\Http\Livewire\Social\MediaPostsSaved;
 use App\Http\Livewire\Social\MediaProfileComponent;
 use App\Http\Livewire\Social\MediaSettingProfile;
 use App\Http\Middleware\UserBanned;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -100,7 +101,18 @@ Route::get('/clear', function () {
 })->name('/clear');
 
 Route::get('/clear-temp', function () {
-//    File::delete(public_path('assets/livewire-tmp/*'));
+
+    $path = public_path('assets/livewire-tmp');
+    $files = File::files($path);
+
+    foreach ($files as $file) {
+        $yesterdayStamp = now()->subHours(12)->timestamp;
+
+        if ($yesterdayStamp > File::lastModified($file)) {
+            File::delete($path . '/' . $file->getFilename());
+        }
+    }
+
     exec('rm -f ' . public_path('assets/livewire-tmp/*'));
     dd("Temps have been cleared!");
 });
